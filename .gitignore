@@ -1,0 +1,8 @@
+node_modules
+style.css
+dist
+obj
+bin
+*.suo
+*.user
+resources
