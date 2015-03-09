@@ -1,2 +1,2 @@
-Refacoring for JavaScript 1.8.5
-===============================
+Refactoring for JavaScript 1.8.5
+================================
