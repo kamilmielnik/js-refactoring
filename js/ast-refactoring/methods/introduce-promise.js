@@ -1,11 +1,13 @@
 define([
-    'ast-refactoring/refactoring-method'
-], function (RefactoringMethod) {
+    'ast-refactoring/refactoring-method',
+    'ast-refactoring/traverse'
+], function (RefactoringMethod, traverse) {
     'use strict';
 
     var IntroducePromise = new RefactoringMethod({
         refactor: function (node) {
             var self = this,
+                hasReturnStatement = traverse.containsNode(node, self.patterns.returnStatement),
                 oldFunctionExpression = node.declarations[0].init,
                 oldFunctionBody = oldFunctionExpression.body,
                 newFunctionBody = this.returnPromiseBody,
@@ -14,15 +16,21 @@ define([
             promiseFunctionBody.body = oldFunctionBody.body;
             oldFunctionBody.body = newFunctionBody.body;
 
-            promiseFunctionBody.body = this.replaceNodesInCurrentScope({
-                nodes: promiseFunctionBody.body,
-                nodePattern: self.patterns.returnStatement,
-                replacementFunction: function (node) {
-                    var newNode = self.fulfill();
-                    newNode.expression.arguments[0] = node.argument;
-                    return newNode;
-                }
-            });
+            if (!hasReturnStatement) {
+                this.appendFulfillToBody(promiseFunctionBody.body);
+            } else {
+                promiseFunctionBody.body = this.replaceNodesInCurrentScope({
+                    nodes: promiseFunctionBody.body,
+                    nodePattern: self.patterns.returnStatement,
+                    replacementFunction: function (node) {
+                        var newNode = self.fulfill();
+                        if (node.argument) {
+                            newNode.expression.arguments[0] = node.argument;
+                        }
+                        return newNode;
+                    }
+                });
+            }
 
             promiseFunctionBody.body = this.replaceNodesInCurrentScope({
                 nodes: promiseFunctionBody.body,
@@ -35,6 +43,10 @@ define([
             });
 
             return this.generateCode(node);
+        },
+
+        appendFulfillToBody: function (body) {
+            body.push(this.fulfill());
         },
 
         nodePattern: {
@@ -134,9 +146,7 @@ define([
                         type: 'Identifier',
                         name: 'fulfill'
                     },
-                    arguments: [
-                        {}
-                    ]
+                    arguments: []
                 }
             };
         },
@@ -150,9 +160,7 @@ define([
                         type: 'Identifier',
                         name: 'reject'
                     },
-                    arguments: [
-                        {}
-                    ]
+                    arguments: []
                 }
             };
         }

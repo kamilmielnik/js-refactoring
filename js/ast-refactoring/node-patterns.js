@@ -17,6 +17,11 @@ define([], function () {
             {
                 type: 'FunctionDeclaration'
             }
-        ]
+        ],
+
+        undefined: {
+            "type": "Identifier",
+            "name": "undefined"
+        }
     };
 });

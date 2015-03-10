@@ -28,6 +28,10 @@ define([
             return _.first(this.find(rootNode, nodePattern, rejectNodePattern));
         };
 
+        this.containsNode = function (rootNode, nodePattern, rejectNodePattern) {
+            return !!this.findOne(rootNode, nodePattern, rejectNodePattern);
+        };
+
         findNodes = function (rootNode, predicate, rejectPredicate) {
             var foundNodes = [];
             if (!rejectPredicate(rootNode)) {
