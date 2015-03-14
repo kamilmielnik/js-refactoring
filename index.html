@@ -4,30 +4,16 @@
 <head>
     <title>Refactoring</title>
     <script src="js/lib/require.js" data-main="js/config"></script>
-    <link rel="stylesheet" href="css/codemirror.css" />
-    <link rel="stylesheet" href="css/fullscreen.css" />
-    <link rel="stylesheet" href="css/show-hint.css" />
-    <link rel="stylesheet" href="css/monokai.css" />
+    <link rel="stylesheet" href="css/lib/codemirror.css" />
+    <link rel="stylesheet" href="css/lib/fullscreen.css" />
+    <link rel="stylesheet" href="css/lib/show-hint.css" />
+    <link rel="stylesheet" href="css/lib/monokai.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="code">
-            <div class="left">
-                <textarea id="code-left">
-                </textarea>
-            </div>
-            <div class="right">
-                <textarea id="code-right">
-                </textarea>
-            </div>
-        </div>
-        <div class="navigation">
-            <div id="btn-refactor" class="button">Refactor!</div>
-        </div>
-    </div>
+    <!-- ko component: 'home' -->
+    <!-- /ko -->
 </body>
 
 </html>

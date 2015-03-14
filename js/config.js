@@ -10,12 +10,9 @@
             'main'
         ],
         paths: {
-            'backbone': 'lib/backbone',
             'jquery': 'lib/jquery-2.1.1',
             'underscore': 'lib/underscore',
             'knockout': 'lib/knockout',
-            'knockback': 'lib/knockback',
-            'knockout-custom-engine': 'lib/knockout.custom-engine',
             'text': 'lib/text',
             'json': 'lib/json',
             'esprima': 'lib/esprima',
@@ -34,10 +31,6 @@
         shim: {
             'underscore': {
                 exports: '_'
-            },
-            'backbone': {
-                deps: ['underscore', 'jquery'],
-                exports: 'Backbone'
             },
             'estraverse': {
                 exports: 'estraverse'

@@ -1,9 +1,10 @@
 define([
     'underscore',
     'esprima',
+    'utils/errors',
     'ast-refactoring/traverse',
     'ast-refactoring/methods/list'
-], function (_, Esprima, traverse, refactoringMethodsList) {
+], function (_, Esprima, errors, traverse, refactoringMethodsList) {
     'use strict';
 
     var ASTRefactoringEngine = function () {
@@ -26,10 +27,14 @@ define([
         };
 
         parseAST = function (code) {
-            return Esprima.parse(code, {
-                loc: true,
-                range: true
-            });
+            try {
+                return Esprima.parse(code, {
+                    loc: true,
+                    range: true
+                });
+            } catch (error) {
+                errors.throw(error);
+            }
         };
 
         refactorNodeInCodeWithRefactoringMethod = function (node, code, refactoringMethod) {

@@ -1,0 +1,35 @@
+@import 'variables';
+.sidebar {
+    background-color: @backgroundColor;
+    position: absolute;
+    right: 0;
+    width: @sidebarWidth;
+    height: 100%;
+    text-align: center;
+    .button {
+        background-color: @buttonBackgroundColor;
+        box-sizing: border-box;
+        margin: auto;
+        padding: 10px 20px;
+        min-width: 100px;
+        min-height: @buttonHeight;
+        max-height: @buttonHeight;
+        max-width: @sidebarWidth;
+        min-width: @sidebarWidth;
+        font-size: 15px;
+        cursor: pointer;
+        &.analyze {
+            position: absolute;
+            top: 0;
+        }
+        &.refactor {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    .list {
+        position: absolute;
+        top: @buttonHeight;
+        bottom: @buttonHeight;
+    }
+}
