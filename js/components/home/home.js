@@ -7,7 +7,7 @@ define([
     'use strict';
 
     return {
-        controlName: 'home',
+        componentName: 'home',
 
         viewModel: function () {
             var code = codeProvider.get([

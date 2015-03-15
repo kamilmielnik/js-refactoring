@@ -1,19 +1,57 @@
 define([
     'underscore',
     'knockout',
-    'beautify'
-], function (_, ko, Beautify) {
+    'beautify',
+    'components/list-of-refactorings/refactoring-entry'
+], function (_, ko, Beautify, RefactoringEntry) {
     'use strict';
 
     return {
-        controlName: 'sidebar',
+        componentName: 'sidebar',
 
         viewModel: function (params) {
-            var codeToRefactor = params.codeToRefactor,
+            var self = this,
+                codeToRefactor = params.codeToRefactor,
                 outputCode = params.outputCode,
                 refactoringEngines = params.refactoringEngines;
 
-            this.list = ko.observableArray();
+            this.refactoringEntries = ko.observableArray([
+                new RefactoringEntry('Introduce Promise', 34, 41),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34)/*,
+                new RefactoringEntry('Introduce Promise', 34, 41),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Introduce Promise', 34, 41),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Introduce Promise', 34, 41),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Introduce Promise', 34, 41),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34),
+                new RefactoringEntry('Remove Redundant Conditional', 43, 49),
+                new RefactoringEntry('Introduce Promise Chain', 34, 34)*/
+            ]);
+
+            this.isAnySelected = ko.computed(function () {
+                return _.any(self.refactoringEntries(), function (refactoringEntry) {
+                    return refactoringEntry.isSelected();
+                });
+            });
 
             this.analyze = function () {
                 window.alert('analyze');

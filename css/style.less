@@ -2,13 +2,20 @@
 @import 'fonts';
 @import 'components/code-input';
 @import 'components/sidebar';
+@import 'components/list-of-refactorings';
 html,
 body {
-    background-color: @backgroundColor;
+    background-color: @monokaiBackgroundColor;
     color: @textColor;
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Open Sans';
     font-weight: 200;
+    overflow: hidden;
+    .noSelect();
+}
+
+.CodeMirror-scrollbar-filler {
+    display: none !important;
 }

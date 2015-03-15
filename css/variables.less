@@ -1,5 +1,77 @@
+@fontSizeXLarge: 24px;
+@fontSizeLarge: 20px;
+@fontSizeMedium: 15px;
 @textColor: white;
+@disabledTextColor: #444;
+@monokaiBackgroundColor: rgb(39, 40, 34);
 @backgroundColor: #222;
-@buttonBackgroundColor: #444;
-@buttonHeight: 40px;
+@scrollbarColor: #aaa;
+@hoverBackgroundColor: lighten(@backgroundColor, 5%);
+@activeBackgroundColor: darken(@backgroundColor, 5%);
+@buttonBackgroundColor: #181818;
+@buttonHeight: 64px;
 @sidebarWidth: 400px;
+@microinteractionTimeShort: 0.2s;
+@microinteractionTimeMedium: 0.3s;
+@microinteractionTimeLong: 0.5s;
+@thinBorder: 1px solid lighten(@backgroundColor, 20%);
+@thinDashedBorder: 1px dashed lighten(@backgroundColor, 20%);
+@easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+.noSelect() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.effect-hover-brackets {
+    div::before, div::after {
+        display: inline-block;
+        opacity: 0;
+        margin-top: -1px;
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+        -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+        transition: transform 0.3s, opacity 0.2s;
+    }
+    div::before {
+        margin-right: 10px;
+        content: '[';
+        -webkit-transform: translateX(20px);
+        -moz-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+    div::after {
+        margin-left: 10px;
+        content: ']';
+        -webkit-transform: translateX(-20px);
+        -moz-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+    div:hover::before,
+    div:hover::after,
+    div:focus::before,
+    div:focus::after {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+}
+
+.scrollbar() {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: @scrollbarColor;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten(@scrollbarColor, 20%);
+    }
+}

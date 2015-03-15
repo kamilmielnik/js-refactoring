@@ -7,20 +7,20 @@ define([
         var loadTemplate;
 
         this.register = function (params) {
-            var controlName = params.controlName,
+            var componentName = params.componentName,
                 viewModel = params.viewModel;
 
-            return loadTemplate(controlName).then(function (templateHTML) {
-                ko.components.register(controlName, {
+            return loadTemplate(componentName).then(function (templateHTML) {
+                ko.components.register(componentName, {
                     template: templateHTML,
                     viewModel: viewModel
                 });
             });
         };
 
-        loadTemplate = function (controlName) {
-            var templateUrl = 'text!components/{controlName}/{controlName}.html'.format({
-                controlName: controlName
+        loadTemplate = function (componentName) {
+            var templateUrl = 'text!components/{componentName}/{componentName}.html'.format({
+                componentName: componentName
             });
 
             return new Promise(function (fulfill) {

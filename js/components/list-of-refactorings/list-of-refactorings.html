@@ -1,0 +1,11 @@
+<!-- ko foreach: refactoringEntries -->
+<div class="refactoring-entry" data-bind="
+    click: toggleIsSelected,
+    css: {
+        disabled: !isSelected(),
+        enabled: isSelected()
+    }">
+    <div class="title" data-bind="text: title"></div>
+    <div class="lines" data-bind="text: lines"></div>
+</div>
+<!-- /ko -->

@@ -26,7 +26,8 @@
             'matchbrackets': 'lib/matchbrackets',
             'show-hint': 'lib/show-hint',
             'javascript-hint': 'lib/javascript-hint',
-            'fullscreen': 'lib/fullscreen'
+            'fullscreen': 'lib/fullscreen',
+            'simplescrollbars': 'lib/simplescrollbars'
         },
         shim: {
             'underscore': {

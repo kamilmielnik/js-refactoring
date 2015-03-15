@@ -15,6 +15,9 @@
     bottom: 0;
     left: 0;
     right: 0;
+    &.full-width {
+        width: 100%;
+    }
     & .code {
         position: absolute;
         width: 100%;
@@ -34,6 +37,8 @@
         }
         & .right {
             right: 0;
+            border-left: 1px dotted darken(@scrollbarColor, 30%);
+            width: calc(~"50% - 1px");
         }
     }
 }

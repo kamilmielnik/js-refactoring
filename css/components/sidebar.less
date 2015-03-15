@@ -2,22 +2,26 @@
 .sidebar {
     background-color: @backgroundColor;
     position: absolute;
+    z-index: 6; //because of CodeMirror's scrollbar
     right: 0;
     width: @sidebarWidth;
     height: 100%;
-    text-align: center;
+    -webkit-transition: @microinteractionTimeLong @easeInOutCirc;
+    -webkit-transform: translateX(0px) 1s;
+    &.hidden {
+        -webkit-transform: translate(@sidebarWidth, 0);
+        opacity: 0;
+    }
     .button {
         background-color: @buttonBackgroundColor;
         box-sizing: border-box;
         margin: auto;
-        padding: 10px 20px;
-        min-width: 100px;
         min-height: @buttonHeight;
         max-height: @buttonHeight;
-        max-width: @sidebarWidth;
-        min-width: @sidebarWidth;
-        font-size: 15px;
+        width: 100%;
         cursor: pointer;
+        -webkit-transition-property: background-color;
+        -webkit-transition-duration: @microinteractionTimeMedium;
         &.analyze {
             position: absolute;
             top: 0;
@@ -26,10 +30,31 @@
             position: absolute;
             bottom: 0;
         }
+        &.disabled {
+            color: @disabledTextColor;
+            pointer-events: none;
+        }
+        &:hover {
+            background-color: @hoverBackgroundColor;
+            -webkit-transition-property: background-color;
+            -webkit-transition-duration: @microinteractionTimeMedium;
+        }
+        > div {
+            padding: 10px 20px;
+            line-height: @buttonHeight - 20px;
+            font-size: @fontSizeXLarge;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+        }
     }
-    .list {
+    .list-of-refactorings {
         position: absolute;
+        width: 100%;
         top: @buttonHeight;
         bottom: @buttonHeight;
+        border-top: @thinBorder;
+        border-bottom: @thinBorder;
+        .scrollbar();
     }
 }

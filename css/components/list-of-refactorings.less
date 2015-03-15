@@ -1,0 +1,27 @@
+@import 'variables';
+.refactoring-entry {
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-bottom: @thinDashedBorder;
+    -webkit-transition-property: color,background-color;
+    -webkit-transition-duration: @microinteractionTimeMedium;
+    &:last-of-type {
+        border-bottom: initial;
+    }
+    &.disabled {
+        color: @disabledTextColor;
+        text-decoration: line-through;
+        -webkit-transition-property: color,background-color;
+        -webkit-transition-duration: @microinteractionTimeMedium;
+    }
+    &:hover {
+        background-color: @hoverBackgroundColor;
+        -webkit-transition-property: color,background-color;
+        -webkit-transition-duration: @microinteractionTimeMedium;
+    }
+    .title {
+        font-size: @fontSizeLarge;
+    }
+}

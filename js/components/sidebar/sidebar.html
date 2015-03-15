@@ -1,3 +1,19 @@
-<div class="button analyze" data-bind="click: analyze">Analyze</div>
-<div class="list"></div>
-<div class="button refactor" data-bind="click: refactor">Refactor!</div>
+<div class="button effect-hover-brackets analyze" data-bind="click: analyze">
+    <div>Analyze</div>
+</div>
+<div class="list-of-refactorings" data-bind="
+    component: {
+        name: 'list-of-refactorings',
+        params: {
+            refactoringEntries: refactoringEntries
+        }
+    }
+"></div>
+<div class="button effect-hover-brackets refactor" data-bind="
+    click: refactor,
+    css: {
+        disabled: !isAnySelected()
+    }
+">
+    <div>Refactor</div>
+</div>

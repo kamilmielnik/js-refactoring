@@ -5,7 +5,8 @@ define([
     'matchbrackets',
     'show-hint',
     'javascript-hint',
-    'fullscreen'
+    'fullscreen',
+    'simplescrollbars'
 ], function (ko, CodeMirror) {
     'use strict';
 
@@ -20,6 +21,7 @@ define([
                     indentWithTabs: true,
                     indentUnit: 4,
                     //readOnly: true,
+                    scrollbarStyle: 'overlay',
                     matchBrackets: true,
                     extraKeys: {
                         'Ctrl-Space': 'autocomplete',
