@@ -43,6 +43,7 @@ define([
 
         this.addString = function (string) {
             this.expression += string;
+            return this;
         };
 
         this.end = function () {

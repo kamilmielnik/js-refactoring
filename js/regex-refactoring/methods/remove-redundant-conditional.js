@@ -12,30 +12,29 @@ define([
 
         regex: new ComplexRegex()
             .addUnnamed(JSSyntax.ifStart)
-            .add('comparison-variable-name', JSSyntax.variableName)
+            .add('compared-value', JSSyntax.reference)
             .addUnnamed(JSSyntax.comparison)
             .add('compare-against', JSSyntax.trueOrFalse)
             .addUnnamed(JSSyntax.ifEnd)
             .addUnnamed(JSSyntax.blockStart)
-            .add('if-assignment-variable-name', JSSyntax.variableName)
+            .add('if-assignment-variable-name', JSSyntax.reference)
             .addUnnamed(JSSyntax.assignment)
             .add('if-assignment-value', JSSyntax.trueOrFalse)
             .addUnnamed(JSSyntax.semicolon)
             .addUnnamed(JSSyntax.blockEnd)
             .addUnnamed(JSSyntax.else)
             .addUnnamed(JSSyntax.blockStart)
-            .add('else-assignment-variable-name', JSSyntax.variableName)
+            .addMatch('if-assignment-variable-name')
             .addUnnamed(JSSyntax.assignment)
             .add('else-assignment-value', JSSyntax.trueOrFalse)
             .addUnnamed(JSSyntax.semicolon)
             .addUnnamed(JSSyntax.blockEnd),
 
         requiredMatches: new RequiredMatches(
-            'comparison-variable-name',
+            'compared-value',
             'compare-against',
             'if-assignment-variable-name',
             'if-assignment-value',
-            'else-assignment-variable-name',
             'else-assignment-value'
         ),
 
@@ -47,7 +46,7 @@ define([
                     return matches['compare-against'] !== matches['if-assignment-value'];
                 }
             })
-            .addGroup('comparison-variable-name')
+            .addGroup('compared-value')
             .addString(';')
     });
 });

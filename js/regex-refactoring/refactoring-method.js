@@ -9,6 +9,8 @@ define([
             refactoringFunction = parameters.refactoringPattern,
             refactoringResultBasedOnMatches;
 
+        this.name = parameters.name;
+
         this.refactor = function (code) {
             var matches = regex.match(code);
             if (requiredMatches.areValid(matches)) {

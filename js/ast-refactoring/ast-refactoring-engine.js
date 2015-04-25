@@ -18,7 +18,7 @@ define([
         this.refactor = function (code) {
             var refactoredCode = code;
 
-            _.each(refactoringMethodsList, function (refactoringMethod) {
+            _(refactoringMethodsList).each(function (refactoringMethod) {
                 var rootNode = parseAST(refactoredCode),
                     matchingNode = traverse.findOne(rootNode, refactoringMethod.nodePattern, refactoringMethod.rejectNodePattern);
 
