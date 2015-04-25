@@ -15,7 +15,7 @@ define([
             .add('variable-name-left', JSSyntax.reference)
             .addUnnamed(JSSyntax.assignment)
             .add('variable-name-right', JSSyntax.reference)
-            .addOptional('comparison', JSSyntax.comparison)
+            .addOptional('comparison', JSSyntax.inverseComparison)
             .addOptional('falsy-value', JSSyntax.falsyValue)
             .addUnnamed(JSSyntax.optional)
             .addMatch('variable-name-right')

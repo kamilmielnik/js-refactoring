@@ -8,6 +8,7 @@ define([
         this.semicolon = new SimpleRegex(';');
         this.assignment = new SimpleRegex('=');
         this.comparison = new SimpleRegex('(===?)', 1, 0);
+        this.inverseComparison = new SimpleRegex('(!==?)', 1, 0);
         this.whitespaces = new SimpleRegex('\\s*');
         this.var = new SimpleRegex('(var\\s+)', 1, 0);
         this.variableName = new SimpleRegex('([a-zA-Z_$][\\.a-zA-Z_\\$0-9]*)', 1, 0);
