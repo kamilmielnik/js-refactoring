@@ -11,7 +11,7 @@ define([
         this.whitespaces = new SimpleRegex('\\s*');
         this.var = new SimpleRegex('(var\\s+)', 1, 0);
         this.variableName = new SimpleRegex('([a-zA-Z_$][\\.a-zA-Z_\\$0-9]*)', 1, 0);
-        this.reference = new SimpleRegex('([a-zA-Z_$][\\.a-zA-Z_\\$0-9]*)', 1, 0); // TODO: build this
+        this.reference = new SimpleRegex('([a-zA-Z_$]([.]?[a-zA-Z_$][a-zA-Z_$0-9]*([(?:[^\\]\\]|\\.)+])*)*)', 1, 0);
         this.trueOrFalse = new SimpleRegex('(true|false)', 1, 0);
         this.falsyValue = new SimpleRegex('(undefined|null|0|false|NaN|void\\s*\\([^\\s]+\\)|void\\s+[^\\s]+|\'\'|""|\\[\\])', 1, 0);
         this.optional = new SimpleRegex('\\?');

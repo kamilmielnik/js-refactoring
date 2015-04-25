@@ -6,6 +6,23 @@ define([
     var RegexRefactoringEngine = function () {
         var getRefactoredCode;
 
+        this.analyze = function (code) {
+            var refactoredCode = code,
+                possibleRefactorings = [];
+
+            _.each(refactoringMethodsList, function (refactoringMethod) {
+                var refactoringResult = refactoringMethod.refactor(refactoredCode);
+                possibleRefactorings.push(refactoringResult);
+                while (refactoringResult.wasRefactoringApplied) {
+                    refactoredCode = getRefactoredCode(refactoredCode, refactoringResult);
+                    refactoringResult = refactoringMethod.refactor(refactoredCode);
+                    possibleRefactorings.push(refactoringResult);
+                }
+            });
+
+            return possibleRefactorings;
+        };
+
         this.refactor = function (code) {
             var refactoredCode = code;
 

@@ -5,6 +5,8 @@ define([
     'use strict';
 
     var IntroducePromise = new RefactoringMethod({
+        name: 'Introduce Promise',
+
         refactor: function (node) {
             var self = this,
                 hasReturnStatement = traverse.containsNode(node, self.patterns.returnStatement),

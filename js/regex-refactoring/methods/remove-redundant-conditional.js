@@ -8,6 +8,8 @@ define([
     'use strict';
 
     return new RefactoringMethod({
+        name: 'Remove Redundant Conditional',
+
         regex: new ComplexRegex()
             .addUnnamed(JSSyntax.ifStart)
             .add('comparison-variable-name', JSSyntax.variableName)
@@ -27,6 +29,7 @@ define([
             .add('else-assignment-value', JSSyntax.trueOrFalse)
             .addUnnamed(JSSyntax.semicolon)
             .addUnnamed(JSSyntax.blockEnd),
+
         requiredMatches: new RequiredMatches(
             'comparison-variable-name',
             'compare-against',
@@ -35,6 +38,7 @@ define([
             'else-assignment-variable-name',
             'else-assignment-value'
         ),
+
         refactoringPattern: new RefactoringPattern()
             .addGroup('if-assignment-variable-name')
             .addString(' = ')

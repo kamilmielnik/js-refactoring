@@ -1,5 +1,5 @@
 define([
-    'regex-refactoring/refactoring-result'
+    'refactoring/result'
 ], function (RefactoringResult) {
     'use strict';
 
