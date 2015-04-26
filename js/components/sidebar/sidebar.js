@@ -2,8 +2,9 @@ define([
     'underscore',
     'knockout',
     'beautify',
+    'utils/parser',
     'components/list-of-refactorings/refactoring-entry'
-], function (_, ko, Beautify, RefactoringEntry) {
+], function (_, ko, Beautify, parser, RefactoringEntry) {
     'use strict';
 
     return {
@@ -25,6 +26,7 @@ define([
 
             this.analyze = function () {
                 this.refactoringEntries.removeAll();
+                parser.parse(codeToRefactor());
                 _(refactoringEngines).each(function (refactoringEngine) {
                     var analysisResults = refactoringEngine.analyze(codeToRefactor()),
                         refactoringEntries = mapAnalysisResultsOntoViewModels(analysisResults);

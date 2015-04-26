@@ -36,5 +36,6 @@ define([
             .addGroup('variable-name-right')
             .addString(' || ')
             .addGroup('alternative-value')
+            .addString(';')
     });
 });

@@ -9,7 +9,8 @@ require([
     componentsLoader.load(
         'home',
         'sidebar',
-        'list-of-refactorings'
+        'list-of-refactorings',
+        'dialog'
     );
 
     $(window).keyup(function (event) {

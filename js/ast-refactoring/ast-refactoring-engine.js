@@ -1,15 +1,13 @@
 define([
     'underscore',
-    'esprima',
-    'utils/errors',
+    'utils/parser',
     'ast-refactoring/traverse',
     'ast-refactoring/methods/list'
-], function (_, Esprima, errors, traverse, refactoringMethodsList) {
+], function (_, parser, traverse, refactoringMethodsList) {
     'use strict';
 
     var ASTRefactoringEngine = function () {
-        var parseAST,
-            refactorNodeInCodeWithRefactoringMethod;
+        var refactorNodeInCodeWithRefactoringMethod;
 
         this.analyze = function (code) {
             code = String(code);
@@ -19,28 +17,17 @@ define([
             var refactoredCode = code;
 
             _(refactoringMethodsList).each(function (refactoringMethod) {
-                var rootNode = parseAST(refactoredCode),
+                var rootNode = parser.parse(refactoredCode),
                     matchingNode = traverse.findOne(rootNode, refactoringMethod.nodePattern, refactoringMethod.rejectNodePattern);
 
                 while (matchingNode) {
                     refactoredCode = refactorNodeInCodeWithRefactoringMethod(matchingNode, refactoredCode, refactoringMethod);
-                    rootNode = parseAST(refactoredCode);
+                    rootNode = parser.parse(refactoredCode);
                     matchingNode = traverse.findOne(rootNode, refactoringMethod.nodePattern, refactoringMethod.rejectNodePattern);
                 }
             });
 
             return refactoredCode;
-        };
-
-        parseAST = function (code) {
-            try {
-                return Esprima.parse(code, {
-                    loc: true,
-                    range: true
-                });
-            } catch (error) {
-                errors.throw(error);
-            }
         };
 
         refactorNodeInCodeWithRefactoringMethod = function (node, code, refactoringMethod) {
