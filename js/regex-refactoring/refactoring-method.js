@@ -9,7 +9,7 @@ define([
             regex = parameters.regex,
             requiredMatches = parameters.requiredMatches,
             refactoringFunction = parameters.refactoringPattern,
-            analysisResultBasedOnMatch,
+            analysisResultBasedOnMatches,
             refactoringResultBasedOnMatches,
             lineNumberBasedOnStringIndex,
             getFirstCharacterInLineIndexes;
@@ -17,9 +17,11 @@ define([
         this.name = parameters.name;
 
         this.analyze = function (code) {
-            var matches = regex.matchAll(code);
-            return _(matches).map(function (match) {
-                return analysisResultBasedOnMatch(code, match);
+            var allMatches = regex.matchAll(code);
+            return _(allMatches).map(function (matches) {
+                if (requiredMatches.areValid(matches)) {
+                    return analysisResultBasedOnMatches(code, matches);
+                }
             });
         };
 
@@ -31,11 +33,13 @@ define([
             return new RefactoringResult();
         };
 
-        analysisResultBasedOnMatch = function (code, match) {
-            var startLine = lineNumberBasedOnStringIndex(code, match.index),
-                endLine = lineNumberBasedOnStringIndex(code, match.index + match.code.length);
+        analysisResultBasedOnMatches = function (code, matches) {
+            var startLine = lineNumberBasedOnStringIndex(code, matches.index),
+                endLine = lineNumberBasedOnStringIndex(code, matches.index + matches.code.length);
 
-            return new AnalysisResult(self, match.code, startLine, endLine);
+            return new AnalysisResult(self, matches.code, startLine, endLine, function () {
+                return refactoringFunction.apply(matches);
+            });
         };
 
         refactoringResultBasedOnMatches = function (matches) {

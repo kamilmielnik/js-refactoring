@@ -3,10 +3,15 @@ define([
 ], function (ko) {
     'use strict';
 
-    var RefactoringEntry = function (title, startLine, endLine) {
+    var RefactoringEntry = function (analysisResult) {
+        var startLine = analysisResult.startLine,
+            endLine = analysisResult.endLine;
+
+        this.analysisResult = ko.observable(analysisResult);
+
         this.isSelected = ko.observable(true);
 
-        this.title = ko.observable(title);
+        this.title = ko.observable(analysisResult.refactoringMethod.name);
 
         this.lines = ko.computed(function () {
             if (startLine === endLine) {
