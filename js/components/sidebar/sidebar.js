@@ -18,7 +18,7 @@ define([
                 possibleRefactorings = ko.observableArray();
 
             this.refactoringEntries = ko.computed(function () {
-                return _(possibleRefactorings()).map(function (possibleRefactoring) {
+                return _(possibleRefactorings()).sortBy('startLine').map(function (possibleRefactoring) {
                     return new RefactoringEntry(possibleRefactoring);
                 });
             });

@@ -32,7 +32,7 @@ define([
             return this;
         };
 
-        this.addWhitespaces = function () {
+        this.whitespaces = function () {
             if (this.expression.length > 0) {
                 addSimpleRegex(JSSyntax.whitespaces);
             }

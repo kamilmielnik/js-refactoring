@@ -8,18 +8,18 @@ define([
     'use strict';
 
     return new RefactoringMethod({
-        name: 'Default Initializer',
+        name: 'Recompose Conditional',
 
         regex: new ComplexRegex()
             .addOptional('var-keyword', JSSyntax.var)
-            .add('variable-name-left', JSSyntax.reference).addWhitespaces()
-            .addUnnamed(JSSyntax.assignment).addWhitespaces()
-            .add('variable-name-right', JSSyntax.reference).addWhitespaces()
-            .addOptional('comparison', JSSyntax.inverseComparison).addWhitespaces()
-            .addOptional('falsy-value', JSSyntax.falsyValue).addWhitespaces()
-            .addUnnamed(JSSyntax.optional).addWhitespaces()
-            .addMatch('variable-name-right').addWhitespaces()
-            .addUnnamed(JSSyntax.ternary).addWhitespaces()
+            .add('variable-name-left', JSSyntax.reference).whitespaces()
+            .addUnnamed(JSSyntax.assignment).whitespaces()
+            .add('variable-name-right', JSSyntax.reference).whitespaces()
+            .addOptional('comparison', JSSyntax.inverseComparison).whitespaces()
+            .addOptional('falsy-value', JSSyntax.falsyValue).whitespaces()
+            .addUnnamed(JSSyntax.optional).whitespaces()
+            .addMatch('variable-name-right').whitespaces()
+            .addUnnamed(JSSyntax.ternary).whitespaces()
             .add('alternative-value', JSSyntax.anythingBesidesSemicolonAndComma)
             .add('endline', JSSyntax.semicolonOrComma),
 

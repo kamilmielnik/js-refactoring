@@ -1,5 +1,5 @@
 define([
-    'regex-refactoring/methods/default-initializer',
+    'regex-refactoring/methods/recompose-conditional',
     'regex-refactoring/methods/remove-redundant-conditional'
 ], function (DefaultInitializer, RemoveRedundantConditional) {
     'use strict';

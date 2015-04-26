@@ -1,6 +1,6 @@
 define([
     'underscore',
-    'text!code/default-initializer.js',
+    'text!code/recompose-conditional.js',
     'text!code/remove-redundant-conditional.js',
     'text!code/introduce-promise.js',
     'text!code/introduce-promise-chain.js'
