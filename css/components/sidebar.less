@@ -55,6 +55,10 @@
         bottom: @buttonHeight;
         border-top: @thinBorder;
         border-bottom: @thinBorder;
+        &.inactive {
+            color: @disabledTextColor;
+            pointer-events: none;
+        }
         .scrollbar();
     }
 }

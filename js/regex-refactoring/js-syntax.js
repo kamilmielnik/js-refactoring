@@ -6,6 +6,7 @@ define([
     var JSSyntax = function () {
         this.endLine = new SimpleRegex('$');
         this.semicolon = new SimpleRegex(';');
+        this.semicolonOrComma = new SimpleRegex('(;|,)', 1, 0);
         this.assignment = new SimpleRegex('=');
         this.comparison = new SimpleRegex('(===?)', 1, 0);
         this.inverseComparison = new SimpleRegex('(!==?)', 1, 0);
@@ -19,6 +20,7 @@ define([
         this.ternary = new SimpleRegex(':');
         this.anything = new SimpleRegex('([^\\.\\$\\^]*)', 1, 0);
         this.anythingBesidesSemicolon = new SimpleRegex('([^\\.\\$\\^;]*)', 1, 0);
+        this.anythingBesidesSemicolonAndComma = new SimpleRegex('([^\\.\\$\\^;,]*)', 1, 0);
         this.ifStart = new SimpleRegex('if\\s*\\(');
         this.ifEnd = new SimpleRegex('\\)');
         this.else = new SimpleRegex('else');

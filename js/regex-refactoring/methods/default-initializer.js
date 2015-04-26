@@ -20,13 +20,14 @@ define([
             .addUnnamed(JSSyntax.optional).addWhitespaces()
             .addMatch('variable-name-right').addWhitespaces()
             .addUnnamed(JSSyntax.ternary).addWhitespaces()
-            .add('alternative-value', JSSyntax.anythingBesidesSemicolon)
-            .addUnnamed(JSSyntax.semicolon),
+            .add('alternative-value', JSSyntax.anythingBesidesSemicolonAndComma)
+            .add('endline', JSSyntax.semicolonOrComma),
 
         requiredMatches: new RequiredMatches(
             'variable-name-left',
             'variable-name-right',
-            'alternative-value'
+            'alternative-value',
+            'endline'
         ),
 
         refactoringPattern: new RefactoringPattern()
@@ -36,6 +37,6 @@ define([
             .addGroup('variable-name-right')
             .addString(' || ')
             .addGroup('alternative-value')
-            .addString(';')
+            .addGroup('endline')
     });
 });
