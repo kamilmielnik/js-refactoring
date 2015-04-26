@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                     expand: true,
                     src: [
                         'js/**/*.js',
-						'js/**/*.html',
+                        'js/**/*.html',
                         'css/**/*.css',
                         'fonts/**',
                         'html/**/*.html',
@@ -101,6 +101,7 @@ module.exports = function (grunt) {
                     todo: true,
                     nomen: true,
                     sub: true,
+                    plusplus: true,
                     predef: [
                         '$',
                         '_',

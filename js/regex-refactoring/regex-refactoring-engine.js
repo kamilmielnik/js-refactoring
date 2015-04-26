@@ -7,17 +7,12 @@ define([
         var getRefactoredCode;
 
         this.analyze = function (code) {
-            var refactoredCode = code,
-                possibleRefactorings = [];
+            var possibleRefactorings = [];
 
-            _.each(refactoringMethodsList, function (refactoringMethod) {
-                var refactoringResult = refactoringMethod.refactor(refactoredCode);
-                possibleRefactorings.push(refactoringResult);
-                while (refactoringResult.wasRefactoringApplied) {
-                    refactoredCode = getRefactoredCode(refactoredCode, refactoringResult);
-                    refactoringResult = refactoringMethod.refactor(refactoredCode);
-                    possibleRefactorings.push(refactoringResult);
-                }
+            _(refactoringMethodsList).each(function (refactoringMethod) {
+                var analysisResults = refactoringMethod.analyze(code);
+                possibleRefactorings = _(possibleRefactorings).concat(analysisResults);
+                analysisResults = refactoringMethod.analyze(code);
             });
 
             return possibleRefactorings;

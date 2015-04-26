@@ -12,16 +12,16 @@ define([
 
         regex: new ComplexRegex()
             .addOptional('var-keyword', JSSyntax.var)
-            .add('variable-name-left', JSSyntax.reference)
-            .addUnnamed(JSSyntax.assignment)
-            .add('variable-name-right', JSSyntax.reference)
-            .addOptional('comparison', JSSyntax.inverseComparison)
-            .addOptional('falsy-value', JSSyntax.falsyValue)
-            .addUnnamed(JSSyntax.optional)
-            .addMatch('variable-name-right')
-            .addUnnamed(JSSyntax.ternary)
-            .add('alternative-value', JSSyntax.anything)
-            .end(),
+            .add('variable-name-left', JSSyntax.reference).addWhitespaces()
+            .addUnnamed(JSSyntax.assignment).addWhitespaces()
+            .add('variable-name-right', JSSyntax.reference).addWhitespaces()
+            .addOptional('comparison', JSSyntax.inverseComparison).addWhitespaces()
+            .addOptional('falsy-value', JSSyntax.falsyValue).addWhitespaces()
+            .addUnnamed(JSSyntax.optional).addWhitespaces()
+            .addMatch('variable-name-right').addWhitespaces()
+            .addUnnamed(JSSyntax.ternary).addWhitespaces()
+            .add('alternative-value', JSSyntax.anythingBesidesSemicolon)
+            .addUnnamed(JSSyntax.semicolon),
 
         requiredMatches: new RequiredMatches(
             'variable-name-left',

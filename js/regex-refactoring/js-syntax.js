@@ -18,6 +18,7 @@ define([
         this.optional = new SimpleRegex('\\?');
         this.ternary = new SimpleRegex(':');
         this.anything = new SimpleRegex('([^\\.\\$\\^]*)', 1, 0);
+        this.anythingBesidesSemicolon = new SimpleRegex('([^\\.\\$\\^;]*)', 1, 0);
         this.ifStart = new SimpleRegex('if\\s*\\(');
         this.ifEnd = new SimpleRegex('\\)');
         this.else = new SimpleRegex('else');
