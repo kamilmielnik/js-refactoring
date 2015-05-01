@@ -3,9 +3,11 @@
     background-color: @backgroundColor;
     position: absolute;
     z-index: 6; //because of CodeMirror's scrollbar
+    top: 0;
+    bottom: @statusBarHeight;
     right: 0;
     width: @sidebarWidth;
-    height: 100%;
+    height: calc(100% -@statusBarHeight);
     -webkit-transition: @microinteractionTimeLong @easeInOutCirc;
     -webkit-transform: translateX(0px) 1s;
     &.hidden {
@@ -22,14 +24,8 @@
         cursor: pointer;
         -webkit-transition-property: background-color;
         -webkit-transition-duration: @microinteractionTimeMedium;
-        &.analyze {
-            position: absolute;
-            top: 0;
-        }
-        &.refactor {
-            position: absolute;
-            bottom: 0;
-        }
+        position: absolute;
+        top: 0;
         &.disabled {
             color: @disabledTextColor;
             pointer-events: none;

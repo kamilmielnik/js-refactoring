@@ -1,19 +1,14 @@
 define([
-    'esprima',
-    'utils/errors'
-], function (Esprima, errors) {
+    'esprima'
+], function (Esprima) {
     'use strict';
 
     var Parser = function () {
         this.parse = function (code) {
-            try {
-                return Esprima.parse(code, {
-                    loc: true,
-                    range: true
-                });
-            } catch (error) {
-                errors.throw(error);
-            }
+            return Esprima.parse(code, {
+                loc: true,
+                range: true
+            });
         };
     };
 

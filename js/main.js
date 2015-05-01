@@ -1,16 +1,17 @@
 require([
     'jquery',
     'components/loader',
+    'utils/application-status',
     'utils/string',
     'utils/knockout-bindings/code-mirror'
-], function ($, componentsLoader) {
+], function ($, componentsLoader, applicationStatus) {
     'use strict';
 
     componentsLoader.load(
         'home',
         'sidebar',
         'list-of-refactorings',
-        'dialog'
+        'status-bar'
     );
 
     $(window).keyup(function (event) {
@@ -21,4 +22,6 @@ require([
             $('.sidebar').toggleClass('hidden');
         }
     });
+
+    applicationStatus.ready();
 });

@@ -37,7 +37,7 @@ define([
                     }
                 });
 
-            textEditor.on('inputRead', function (codeMirror) {
+            textEditor.on('change', function (codeMirror) {
                 hasInputChangedBecauseOfUser = true;
                 observableCode(codeMirror.getValue());
                 hasInputChangedBecauseOfUser = false;

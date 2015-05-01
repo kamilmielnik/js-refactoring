@@ -1,0 +1,34 @@
+@import 'variables';
+.status-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    > div {
+        height: @statusBarHeight;
+        line-height: @statusBarHeight;
+        border-top: @thinBorder;
+        background-color: @backgroundColor;
+        box-sizing: border-box;
+        .message {
+            padding: 0 10px;
+            &.error {
+                -webkit-animation-name: blinkError;
+                -webkit-animation-duration: @microinteractionTimeLong;
+            }
+        }
+    }
+}
+
+@-webkit-keyframes blinkError {
+    0% {
+        color: @textErrorColor;
+        font-size: @fontSizeBase;
+    }
+    10% {
+        font-size: @fontSizeMedium;
+    }
+    100% {
+        color: white;
+        font-size: @fontSizeBase;
+    }
+}

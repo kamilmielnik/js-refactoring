@@ -3,8 +3,9 @@ define([
     'knockout',
     'beautify',
     'utils/parser',
+    'utils/application-status',
     'components/list-of-refactorings/refactoring-entry'
-], function (_, ko, Beautify, parser, RefactoringEntry) {
+], function (_, ko, Beautify, parser, applicationStatus, RefactoringEntry) {
     'use strict';
 
     var componentStates = {
@@ -32,10 +33,10 @@ define([
                 });
             });
 
-            this.numberOfSelectedRefactorings = ko.computed(function () {
-                return _(this.refactoringEntries()).filter(function (refactoringEntry) {
+            this.noRefactoringsSelected = ko.computed(function () {
+                return !_(this.refactoringEntries()).any(function (refactoringEntry) {
                     return refactoringEntry.isSelected();
-                }).length;
+                });
             }.bind(this));
 
             this.analyze = function () {
@@ -56,8 +57,10 @@ define([
                         possibleRefactorings(possibleRefactorings().concat(foundRefactorings));
                     }.bind(this));
                     this.state(componentStates.analysisDone);
+                    applicationStatus.ready();
                 } catch (error) {
                     this.state(componentStates.ready);
+                    applicationStatus.error(error);
                 }
             }.bind(this);
 
