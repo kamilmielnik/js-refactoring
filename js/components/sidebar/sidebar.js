@@ -7,6 +7,12 @@ define([
 ], function (_, ko, Beautify, parser, RefactoringEntry) {
     'use strict';
 
+    var componentStates = {
+        ready: 'ready',
+        analysing: 'analysing',
+        analysisDone: 'analysisDone'
+    };
+
     return {
         componentName: 'sidebar',
 
@@ -14,8 +20,11 @@ define([
             var codeToRefactor = params.codeToRefactor,
                 outputCode = params.outputCode,
                 refactoringEngines = params.refactoringEngines,
-                isAnalysisDone = ko.observable(false),
-                possibleRefactorings = ko.observableArray();
+                possibleRefactorings = ko.observableArray(),
+                analyze,
+                refactor;
+
+            this.state = ko.observable(componentStates.ready);
 
             this.refactoringEntries = ko.computed(function () {
                 return _(possibleRefactorings()).sortBy('startLine').map(function (possibleRefactoring) {
@@ -23,25 +32,36 @@ define([
                 });
             });
 
-            this.canRefactor = ko.computed(function () {
-                return isAnalysisDone() && _(this.refactoringEntries()).any(function (refactoringEntry) {
+            this.numberOfSelectedRefactorings = ko.computed(function () {
+                return _(this.refactoringEntries()).filter(function (refactoringEntry) {
                     return refactoringEntry.isSelected();
-                });
+                }).length;
             }.bind(this));
 
             this.analyze = function () {
-                possibleRefactorings.removeAll();
-                parser.parse(codeToRefactor());
-                _(refactoringEngines).each(function (refactoringEngine) {
-                    var foundRefactorings = refactoringEngine.analyze(codeToRefactor());
-                    if (foundRefactorings) {
-                        possibleRefactorings(possibleRefactorings().concat(foundRefactorings));
-                    }
-                }.bind(this));
-                isAnalysisDone(true);
+                if (this.state() === componentStates.ready) {
+                    analyze();
+                } else if (this.state() === componentStates.analysisDone) {
+                    refactor();
+                }
             };
 
-            this.refactor = function () {
+            analyze = function () {
+                this.state(componentStates.analysing);
+                possibleRefactorings.removeAll();
+                try {
+                    parser.parse(codeToRefactor());
+                    _(refactoringEngines).each(function (refactoringEngine) {
+                        var foundRefactorings = refactoringEngine.analyze(codeToRefactor()) || [];
+                        possibleRefactorings(possibleRefactorings().concat(foundRefactorings));
+                    }.bind(this));
+                    this.state(componentStates.analysisDone);
+                } catch (error) {
+                    this.state(componentStates.ready);
+                }
+            }.bind(this);
+
+            refactor = function () {
                 var refactoredCode = codeToRefactor(),
                     doneRefactorings = [],
                     beautifiedRefactoredCode;
@@ -57,12 +77,12 @@ define([
                 beautifiedRefactoredCode = Beautify.js_beautify(refactoredCode);
                 outputCode(beautifiedRefactoredCode);
                 possibleRefactorings.removeAll(doneRefactorings);
-                isAnalysisDone(false);
-            };
+                this.state(componentStates.ready);
+            }.bind(this);
 
             codeToRefactor.subscribe(function () {
-                isAnalysisDone(false);
-            });
+                this.state(componentStates.ready);
+            }.bind(this));
         }
     };
 });

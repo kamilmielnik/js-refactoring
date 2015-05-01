@@ -1,6 +1,17 @@
 <div class="button effect-hover-brackets analyze" data-bind="click: analyze">
-    <div>Analyze</div>
+    <div data-bind="visible: state() === 'ready'">
+        Analyze
+    </div>
+
+    <div data-bind="visible: state() === 'analysing'">
+        ...
+    </div>
+
+    <div data-bind="visible: state() === 'analysisDone' && numberOfSelectedRefactorings() > 0">
+        Refactor
+    </div>
 </div>
+
 <div class="list-of-refactorings" data-bind="
     component: {
         name: 'list-of-refactorings',
@@ -9,11 +20,3 @@
         }
     }
 "></div>
-<div class="button effect-hover-brackets refactor" data-bind="
-    click: refactor,
-    css: {
-        disabled: !canRefactor()
-    }
-">
-    <div>Refactor</div>
-</div>

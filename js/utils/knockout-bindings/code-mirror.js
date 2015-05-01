@@ -12,7 +12,8 @@ define([
 
     ko.bindingHandlers.codeMirror = {
         init: function (element, valueAccessor) {
-            var observableCode = valueAccessor(),
+            var hasInputChangedBecauseOfUser = false,
+                observableCode = valueAccessor(),
                 textEditor = CodeMirror.fromTextArea(element, {
                     mode: 'javascript',
                     theme: 'monokai',
@@ -36,13 +37,16 @@ define([
                     }
                 });
 
-
-            textEditor.on('blur', function (codeMirror) {
+            textEditor.on('inputRead', function (codeMirror) {
+                hasInputChangedBecauseOfUser = true;
                 observableCode(codeMirror.getValue());
+                hasInputChangedBecauseOfUser = false;
             });
 
-            ko.computed(function () {
-                textEditor.setValue(observableCode());
+            observableCode.subscribe(function () {
+                if (!hasInputChangedBecauseOfUser) {
+                    textEditor.setValue(observableCode());
+                }
             });
         }
     };
