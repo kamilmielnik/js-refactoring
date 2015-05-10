@@ -9,6 +9,13 @@ define([
                 return arrayCandidate;
             }
             return [arrayCandidate];
+        },
+
+        deepClone: function (object) {
+            var stringifiedObject = JSON.stringify(object),
+                recreatedObject = JSON.parse(stringifiedObject);
+
+            return recreatedObject;
         }
     };
 });

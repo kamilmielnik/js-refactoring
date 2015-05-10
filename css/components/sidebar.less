@@ -35,6 +35,11 @@
             -webkit-transition-property: background-color;
             -webkit-transition-duration: @microinteractionTimeMedium;
         }
+        &:active {
+            background-color: @activeBackgroundColor;
+            -webkit-transition-property: background-color;
+            -webkit-transition-duration: @microinteractionTimeShort;
+        }
         > div {
             padding: 10px 20px;
             line-height: @buttonHeight - 20px;

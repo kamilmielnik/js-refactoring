@@ -10,6 +10,10 @@ define([
     return new RefactoringMethod({
         name: 'Remove Redundant Conditional',
 
+        info: 'You have a redundant conditional code which assings condition\'s result to a variable.',
+
+        suggestedRefactorings: [],
+
         regex: new ComplexRegex()
             .addUnnamed(JSSyntax.ifStart).whitespaces()
             .add('compared-value', JSSyntax.reference).whitespaces()

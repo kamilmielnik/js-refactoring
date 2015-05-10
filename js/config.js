@@ -15,6 +15,7 @@
             'knockout': 'lib/knockout',
             'text': 'lib/text',
             'json': 'lib/json',
+            'string': 'lib/string',
             'esprima': 'lib/esprima',
             'estraverse': 'lib/estraverse',
             'escodegen': 'lib/escodegen.browser',

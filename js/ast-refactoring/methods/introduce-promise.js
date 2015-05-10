@@ -7,6 +7,10 @@ define([
     var IntroducePromise = new RefactoringMethod({
         name: 'Introduce Promise',
 
+        info: '',
+
+        suggestedRefactorings: [],
+
         refactor: function (node) {
             var self = this,
                 hasReturnStatement = traverse.containsNode(node, self.patterns.returnStatement),
@@ -61,6 +65,16 @@ define([
                     },
                     init: {
                         type: 'FunctionExpression',
+                        /*params: [
+                            {
+                                "type": "Identifier",
+                                "name": "successCallback"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "failureCallback"
+                            }
+                        ],*/
                         body: {
                             type: 'BlockStatement'
                         }

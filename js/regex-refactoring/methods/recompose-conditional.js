@@ -3,12 +3,19 @@ define([
     'regex-refactoring/refactoring-method',
     'regex-refactoring/complex-regex',
     'regex-refactoring/required-matches',
-    'regex-refactoring/refactoring-pattern'
-], function (JSSyntax, RefactoringMethod, ComplexRegex, RequiredMatches, RefactoringPattern) {
+    'regex-refactoring/refactoring-pattern',
+    'refactoring/methods'
+], function (JSSyntax, RefactoringMethod, ComplexRegex, RequiredMatches, RefactoringPattern, refactoringMethods) {
     'use strict';
 
     return new RefactoringMethod({
         name: 'Recompose Conditional',
+
+        info: 'You have conditional code that is unnecessarily verbose and does not use the most readable JavaScript construct.',
+
+        suggestedRefactorings: [
+            refactoringMethods.recomposeConditional
+        ],
 
         regex: new ComplexRegex()
             .addOptional('var-keyword', JSSyntax.var)

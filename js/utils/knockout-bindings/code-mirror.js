@@ -21,7 +21,6 @@ define([
                     lineNumbers: true,
                     indentWithTabs: true,
                     indentUnit: 4,
-                    //readOnly: true,
                     scrollbarStyle: 'overlay',
                     matchBrackets: true,
                     extraKeys: {
@@ -48,6 +47,25 @@ define([
                     textEditor.setValue(observableCode());
                 }
             });
+        }
+    };
+
+    ko.bindingHandlers.codeMirrorReadOnly = {
+        init: function (element, valueAccessor, allBindings) {
+            var firstLineNumberBinding = allBindings().firstLineNumber;
+
+            CodeMirror.fromTextArea(element, {
+                mode: 'javascript',
+                theme: 'monokai',
+                firstLineNumber: firstLineNumberBinding ? firstLineNumberBinding() : 1,
+                lineNumbers: true,
+                indentWithTabs: true,
+                indentUnit: 4,
+                readOnly: true,
+                cursorBlinkRate: -1,
+                scrollbarStyle: 'overlay'
+            });
+
         }
     };
 });

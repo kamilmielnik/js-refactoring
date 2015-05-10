@@ -1,19 +1,14 @@
-<div class="button effect-hover-brackets analyze" data-bind="
-    click: analyze,
-    css: {
-        disabled: noRefactoringsSelected() && state()==='analysisDone'
-    }">
-
-    <div data-bind="visible: state()==='ready'">
-        Analyze
-    </div>
-
-    <div data-bind="visible: state()==='analysing'">
-        ...
-    </div>
-
-    <div data-bind="visible: state()==='analysisDone'">
-        Refactor
+<div class="button effect-hover-brackets analyze" data-bind="click: analyze">
+    <div>
+        <span data-bind="visible: state()==='ready'">
+            Analyze
+        </span>
+        <span data-bind="visible: state()==='analysing'">
+            ...
+        </span>
+        <span data-bind="visible: state()==='analysisDone'">
+            Refactor
+        </span>
     </div>
 </div>
 

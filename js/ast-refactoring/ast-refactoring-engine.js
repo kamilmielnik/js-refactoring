@@ -4,8 +4,9 @@ define([
     'ast-refactoring/traverse',
     'ast-refactoring/methods/list',
     'refactoring/analysis-result',
-    'utils/line-numbers'
-], function (_, parser, traverse, refactoringMethodsList, AnalysisResult, lineNumbersUtils) {
+    'utils/line-numbers',
+    'utils/utils'
+], function (_, parser, traverse, refactoringMethodsList, AnalysisResult, lineNumbersUtils, utils) {
     'use strict';
 
     var ASTRefactoringEngine = function () {
@@ -22,7 +23,8 @@ define([
                         startLine = lineNumbersUtils.lineNumberBasedOnStringIndex(code, codeStartIndex),
                         endLine = lineNumbersUtils.lineNumberBasedOnStringIndex(code, codeEndIndex),
                         analysisResult = new AnalysisResult(refactoringMethod, matchedCode, startLine, endLine, function () {
-                            return refactoringMethod.refactor(matchingNode);
+                            var clonedMatchingNode = utils.deepClone(matchingNode);
+                            return refactoringMethod.refactor(clonedMatchingNode);
                         });
 
                     analysisResults.push(analysisResult);

@@ -7,17 +7,17 @@ module.exports = function (grunt) {
                 livereload: true
             },
             js: {
-                files: ['js/*.js', 'js/**/*.js', 'test/*.js', 'test/**/*.js']
+                files: ['**/*.js']
             },
             json: {
-                files: ['data/**/*.json']
+                files: ['**/*.json']
             },
             css: {
-                files: ['css/*.less', 'css/**/*.less'],
+                files: ['**/*.less'],
                 tasks: ['less']
             },
             html: {
-                files: ['index.html', 'tests.html', 'html/*.html', 'html/**/*.html']
+                files: ['**/*.html']
             }
         },
         connect: {
@@ -102,6 +102,7 @@ module.exports = function (grunt) {
                     nomen: true,
                     sub: true,
                     plusplus: true,
+                    unparam: true,
                     predef: [
                         '$',
                         '_',

@@ -6,10 +6,14 @@ define([
 ], function (_, CodeUtils, nodePatterns, traverse) {
     'use strict';
 
-    var RefactoringMethod = function (options) {
+    var RefactoringMethod = function (parameters) {
         _.extend(this, {
             patterns: nodePatterns
         });
+
+        this.suggestedRefactorings = parameters.suggestedRefactorings || [];
+
+        this.info = parameters.info || '';
 
         this.generateCode = function (node) {
             return CodeUtils.generate(node);
@@ -25,7 +29,7 @@ define([
             });
         };
 
-        return _.extend(options, this);
+        return _.extend(parameters, this);
     };
 
     return RefactoringMethod;

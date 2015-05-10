@@ -13,6 +13,10 @@ define([
 
         this.name = parameters.name;
 
+        this.info = parameters.info || '';
+
+        this.suggestedRefactorings = parameters.suggestedRefactorings || [];
+
         this.analyze = function (code) {
             var allMatches = regex.matchAll(code);
             return _(allMatches).map(function (matches) {
