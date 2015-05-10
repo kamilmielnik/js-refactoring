@@ -8,7 +8,7 @@ define([
         var self = this,
             regex = parameters.regex,
             requiredMatches = parameters.requiredMatches,
-            refactoringFunction = parameters.refactoringPattern,
+            refactoringPattern = parameters.refactoringPattern,
             analysisResultBasedOnMatches;
 
         this.name = parameters.name;
@@ -28,11 +28,12 @@ define([
 
         analysisResultBasedOnMatches = function (code, matches) {
             var startLine = lineNumbersUtils.lineNumberBasedOnStringIndex(code, matches.index),
-                endLine = lineNumbersUtils.lineNumberBasedOnStringIndex(code, matches.index + matches.code.length);
+                endLine = lineNumbersUtils.lineNumberBasedOnStringIndex(code, matches.index + matches.code.length),
+                refactoringFunction = refactoringPattern ? function () {
+                    return refactoringPattern.apply(matches);
+                } : undefined;
 
-            return new AnalysisResult(self, matches.code, startLine, endLine, function () {
-                return refactoringFunction.apply(matches);
-            });
+            return new AnalysisResult(self, matches.code, startLine, endLine, refactoringFunction);
         };
     };
 

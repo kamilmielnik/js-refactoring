@@ -1,11 +1,13 @@
 define([
     'regex-refactoring/methods/recompose-conditional',
-    'regex-refactoring/methods/remove-redundant-conditional'
-], function (DefaultInitializer, RemoveRedundantConditional) {
+    'regex-refactoring/methods/remove-redundant-conditional',
+    'regex-refactoring/methods/long-parameter-list'
+], function (DefaultInitializer, RemoveRedundantConditional, LongParameterList) {
     'use strict';
 
     return [
         DefaultInitializer,
-        RemoveRedundantConditional
+        RemoveRedundantConditional,
+        LongParameterList
     ];
 });

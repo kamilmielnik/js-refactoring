@@ -22,6 +22,10 @@ define([
         this.anythingBesidesSemicolon = new SimpleRegex('([^\\.\\$\\^;]*)', 1, 0);
         this.anythingBesidesSemicolonAndComma = new SimpleRegex('([^\\.\\$\\^;,]*)', 1, 0);
         this.ifStart = new SimpleRegex('if\\s*\\(');
+        this.function = new SimpleRegex('function');
+        this.argumentsListStart = new SimpleRegex('\\(');
+        this.argumentsListEnd = new SimpleRegex('\\)');
+        this.fourOrMoreArguments = new SimpleRegex('\\s*(\\S+\\s*,\\s*){3,}\\S+');
         this.ifEnd = new SimpleRegex('\\)');
         this.else = new SimpleRegex('else');
         this.blockStart = new SimpleRegex('\\{');

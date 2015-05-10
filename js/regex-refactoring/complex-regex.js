@@ -44,6 +44,12 @@ define([
             return this;
         };
 
+        this.addOptionalUnnamed = function (simpleRegex) {
+            addSimpleRegex(simpleRegex);
+            this.expression += '?';
+            return this;
+        };
+
         this.addString = function (string) {
             this.expression += string;
             return this;
