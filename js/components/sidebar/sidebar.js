@@ -71,7 +71,7 @@ define([
 
                 _(this.refactoringEntries()).each(function (refactoringEntry) {
                     var analysisResult = refactoringEntry.analysisResult();
-                    if (refactoringEntry.isSelected()) {
+                    if (refactoringEntry.isSelected() && refactoringEntry.isAutomaticRefactoringPossible()) {
                         refactoredCode = refactoredCode.replace(analysisResult.matchedCode, analysisResult.refactor());
                         doneRefactorings.push(analysisResult);
                     }

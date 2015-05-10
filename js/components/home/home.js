@@ -11,9 +11,10 @@ define([
 
         viewModel: function () {
             var code = codeProvider.get([
-                    'introducePromise',
+                    /*'introducePromise',
                     'defaultInitializer',
-                    'removeRedundantConditional'
+                    'removeRedundantConditional',*/
+                    'sample'
                 ]);
 
             this.codeLeft = ko.observable(code);
