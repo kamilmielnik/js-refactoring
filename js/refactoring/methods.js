@@ -25,6 +25,22 @@ define([], function () {
         introduceParameterObject: {
             name: 'Introduce Parameter Object',
             url: 'http://refactoring.com/catalog/introduceParameterObject.html'
+        },
+
+        extractMethod: {
+            name: 'Extract Method',
+            url: 'http://www.refactoring.com/catalog/extractMethod.html'
+        },
+
+        replaceMethodWithMethodObject: {
+            name: 'Replace Method with Method Object',
+            url: 'http://www.refactoring.com/catalog/replaceMethodWithMethodObject.html'
         }
+        /*,
+
+        xxx: {
+            name: '',
+            url: ''
+        }*/
     };
 });

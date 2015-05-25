@@ -1,9 +1,11 @@
 define([
-    'ast-refactoring/methods/introduce-promise'
-], function (IntroducePromise) {
+    'ast-refactoring/methods/introduce-promise',
+    'ast-refactoring/methods/long-method'
+], function (IntroducePromise, LongMethod) {
     'use strict';
 
     return [
-        IntroducePromise
+        IntroducePromise,
+        LongMethod
     ];
 });

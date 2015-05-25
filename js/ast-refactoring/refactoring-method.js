@@ -15,6 +15,8 @@ define([
 
         this.info = parameters.info || '';
 
+        this.postCheck = parameters.postCheck;
+
         this.generateCode = function (node) {
             return CodeUtils.generate(node);
         };
