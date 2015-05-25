@@ -4,14 +4,6 @@
     <div class="details">
         <div class="lines" data-bind="text: lines"></div>
         <div class="actions">
-            <div class="action-button" title="Code Smell Info" data-bind="
-                click: showInfo,
-                css: {
-                    pressed: selectedExtension() === 'info',
-                    disabled: !info()
-                }">
-                <span class="icon-info"></span>
-            </div>
             <div class="action-button" title="Affected Code" data-bind="
                 click: showCode,
                 css: {
@@ -20,14 +12,6 @@
                 }">
                 <span class="icon-code"></span>
             </div>
-            <div class="action-button" title="Suggested Refactorings" data-bind="
-                click: showSuggestedRefactorings,
-                css: {
-                    pressed: selectedExtension() === 'suggested-refactorings',
-                    disabled: suggestedRefactorings().length === 0
-                }">
-                <span class="icon-bulb"></span>
-            </div>
             <div class="action-button" title="Automatic Refactoring" data-bind="
                 click: showRefactoredCode,
                 css: {
@@ -35,6 +19,22 @@
                     disabled: !isAutomaticRefactoringPossible()
                 }">
                 <span class="icon-wand"></span>
+            </div>
+            <div class="action-button" title="Code Smell Info" data-bind="
+                click: showInfo,
+                css: {
+                    pressed: selectedExtension() === 'info',
+                    disabled: !info()
+                }">
+                <span class="icon-info"></span>
+            </div>
+            <div class="action-button" title="Suggested Refactorings" data-bind="
+                click: showSuggestedRefactorings,
+                css: {
+                    pressed: selectedExtension() === 'suggested-refactorings',
+                    disabled: suggestedRefactorings().length === 0
+                }">
+                <span class="icon-bulb"></span>
             </div>
         </div>
     </div>
