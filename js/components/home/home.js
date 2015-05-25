@@ -17,9 +17,7 @@ define([
                     'sample'
                 ]);
 
-            this.codeLeft = ko.observable(code);
-
-            this.codeRight = ko.observable(code);
+            this.code = ko.observable(code);
 
             this.refactoringEngines = [
                 new RegexRefactoringEngine(),

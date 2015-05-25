@@ -1,24 +1,16 @@
 <div class="code-container">
     <div class="code">
-        <div class="left">
-            <textarea data-bind="
-                value: codeLeft,
-                codeMirror: codeLeft
-            "></textarea>
-        </div>
-        <div class="right">
-            <textarea data-bind="
-                value: codeRight,
-                codeMirror: codeRight
-            "></textarea>
-        </div>
+        <textarea data-bind="
+            value: code,
+            codeMirror: code
+        "></textarea>
     </div>
 </div>
 <div class="sidebar" data-bind="component: {
     name: 'sidebar',
     params: {
-        codeToRefactor: codeLeft,
-        outputCode: codeRight,
+        codeToRefactor: code,
+        outputCode: code,
         refactoringEngines: refactoringEngines
     }
 }"></div>
