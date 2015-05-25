@@ -35,12 +35,10 @@ define([], function () {
         replaceMethodWithMethodObject: {
             name: 'Replace Method with Method Object',
             url: 'http://www.refactoring.com/catalog/replaceMethodWithMethodObject.html'
-        }
-        /*,
+        },
 
-        xxx: {
-            name: '',
-            url: ''
-        }*/
+        rename: {
+            name: 'Rename identifier'
+        }
     };
 });

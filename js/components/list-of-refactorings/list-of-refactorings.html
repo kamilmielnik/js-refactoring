@@ -53,7 +53,7 @@
         <div data-bind="if: selectedExtension() === 'suggested-refactorings'">
             <ul data-bind="foreach: suggestedRefactorings">
                 <li>
-                    <a data-bind="text: name, attr: { href: url }"></a>
+                    <a data-bind="text: name, attr: { href: $data.hasOwnProperty('url') ? url : '' }"></a>
                 </li>
             </ul>
         </div>

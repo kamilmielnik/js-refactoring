@@ -5,7 +5,7 @@ define([
 ], function (RefactoringMethod, traverse, refactoringMethods) {
     'use strict';
 
-    var IntroducePromise = new RefactoringMethod({
+    var LongMethod = new RefactoringMethod({
         name: 'Long Method',
 
         info: 'The object programs that live best and longest are those with short methods. ',
@@ -17,7 +17,7 @@ define([
         ],
 
         nodePattern: {
-            type: "FunctionExpression"
+            type: 'FunctionExpression'
         },
 
         postCheck: function (matchingNode) {
@@ -26,5 +26,5 @@ define([
         }
     });
 
-    return IntroducePromise;
+    return LongMethod;
 });

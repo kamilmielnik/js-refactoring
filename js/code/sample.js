@@ -1,3 +1,5 @@
+var a = 2;
+
 function isInteger(value) {
     if (isNaN(value)) {
         return false;
@@ -39,5 +41,5 @@ if (isJohnAMan === true) {
 }
 
 function loadHeaderBodyFooterAndAds(header, body, footer, ads) {
-    $('#content').html(header + body + footer + ads);
+    var x = $('#content').html(header + body + footer + ads);
 }
