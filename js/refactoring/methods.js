@@ -39,6 +39,11 @@ define([], function () {
 
         rename: {
             name: 'Rename identifier'
+        },
+
+        pullUpField: {
+            name: 'Pull Up Field',
+            url: 'http://www.refactoring.com/catalog/pullUpField.html'
         }
     };
 });
