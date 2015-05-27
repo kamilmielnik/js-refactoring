@@ -44,6 +44,26 @@ define([], function () {
         pullUpField: {
             name: 'Pull Up Field',
             url: 'http://www.refactoring.com/catalog/pullUpField.html'
+        },
+
+        pullUpMethod: {
+            name: 'Pull Up Method',
+            url: 'http://www.refactoring.com/catalog/pullUpMethod.html'
+        },
+
+        substituteAlgorithm: {
+            name: 'Substitute Algorithm',
+            url: 'http://www.refactoring.com/catalog/substituteAlgorithm.html'
+        },
+
+        extractClass: {
+            name: 'Extract Class',
+            url: 'http://www.refactoring.com/catalog/extractClass.html'
+        },
+
+        formTemplateMethod: {
+            name: 'Form Template Method',
+            url: 'http://www.refactoring.com/catalog/formTemplateMethod.html'
         }
     };
 });

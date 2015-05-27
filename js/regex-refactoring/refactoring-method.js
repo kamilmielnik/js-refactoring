@@ -17,13 +17,19 @@ define([
 
         this.suggestedRefactorings = parameters.suggestedRefactorings || [];
 
+        this.postCheck = parameters.postCheck;
+
         this.analyze = function (code) {
             var allMatches = regex.matchAll(code);
             return _(allMatches).map(function (matches) {
-                if (requiredMatches.areValid(matches)) {
-                    return analysisResultBasedOnMatches(code, matches);
+                if (!requiredMatches.areValid(matches)) {
+                    return;
                 }
-            });
+                if (self.postCheck && !self.postCheck(matches)) {
+                    return;
+                }
+                return analysisResultBasedOnMatches(code, matches);
+            }).filter(_.identity);
         };
 
         analysisResultBasedOnMatches = function (code, matches) {

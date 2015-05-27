@@ -10,7 +10,6 @@ define([
             _(refactoringMethodsList).each(function (refactoringMethod) {
                 var analysisResults = refactoringMethod.analyze(code);
                 possibleRefactorings = _(possibleRefactorings).concat(analysisResults);
-                analysisResults = refactoringMethod.analyze(code);
             });
 
             return possibleRefactorings;

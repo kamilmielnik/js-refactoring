@@ -49,3 +49,12 @@ function loadHeaderBodyFooterAndAds(header, body, footer, ads) {
             do something with this html
     */
 }
+
+list1 = list1.filter(function(a, b) {
+    return a > b ? 1 : -1;
+});
+
+
+list2 = list2.filter(function(a, b) {
+    return a > b ? 1 : -1;
+});

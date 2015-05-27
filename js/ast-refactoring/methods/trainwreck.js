@@ -8,11 +8,12 @@ define([
     var Trainwreck = new RefactoringMethod({
         name: 'Trainwreck',
 
-        info: 'Your expression forms a trainwreck. This is the Law of Demeter violation.',
+        info: 'Your expression forms a trainwreck. This is a Law of Demeter violation.',
 
         suggestedRefactorings: [
             refactoringMethods.extractMethod,
-            refactoringMethods.pullUpField
+            refactoringMethods.pullUpField,
+            refactoringMethods.pullUpMethod
         ],
 
         nodePattern: {
