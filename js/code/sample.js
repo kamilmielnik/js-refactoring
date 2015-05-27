@@ -1,4 +1,4 @@
-var a = 2;
+var a = 2; //TODO: remove this variable as it is unused
 
 function isInteger(value) {
     if (isNaN(value)) {
@@ -42,4 +42,8 @@ if (isJohnAMan === true) {
 
 function loadHeaderBodyFooterAndAds(header, body, footer, ads) {
     var x = $('#content').html(header + body + footer + ads);
+    /*
+        TODO:
+            do something with this html
+    */
 }

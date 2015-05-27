@@ -30,6 +30,7 @@ define([
         this.else = new SimpleRegex('else');
         this.blockStart = new SimpleRegex('\\{');
         this.blockEnd = new SimpleRegex('\\}');
+        this.todoComment = new SimpleRegex('.*((\\/\\/\\s*[tT][oO]\\s*[dD][oO].*)|(\\/\\*\\s*[tT][oO]\\s*[dD][oO].*[\\w\\W]*\\*\\/))', 3, 0);
     };
 
     return new JSSyntax();
