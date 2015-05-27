@@ -61,6 +61,7 @@ module.exports = function (grunt) {
                         'css/**/*.css',
                         'fonts/**',
                         'html/**/*.html',
+						'favicon.ico',
                         'index.html',
                         '!js/test/**/*.js',
                         '!js/main-unit-tests.js'
