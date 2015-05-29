@@ -21,8 +21,12 @@ define([
         },
 
         postCheck: function (matchingNode) {
-            var numberOfLines = matchingNode.loc.end.line - matchingNode.loc.start.line + 1;
-            return numberOfLines > 15;
+            var numberOfLines = matchingNode.loc.end.line - matchingNode.loc.start.line + 1,
+                methodName = matchingNode.id && matchingNode.id.name,
+                nameStartsWithACapitalLetter = methodName && methodName.toUpperCase()[0] === methodName[0],
+                isMethodAConstructor = nameStartsWithACapitalLetter;
+            
+            return !isMethodAConstructor && numberOfLines > 15;
         }
     });
 
