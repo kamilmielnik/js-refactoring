@@ -58,3 +58,7 @@ list1 = list1.filter(function(a, b) {
 list2 = list2.filter(function(a, b) {
     return a > b ? 1 : -1;
 });
+
+var asyncOperation = function(successCallback, failureCallback) {
+    doSomethingAsync(successCallback, failureCallback);
+};

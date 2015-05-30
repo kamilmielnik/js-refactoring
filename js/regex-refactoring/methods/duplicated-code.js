@@ -12,7 +12,7 @@ define([
     var DuplicatedCode = new RefactoringMethod({
         name: 'Duplicated Code',
 
-        info: 'Number one in the stik parade is duplicated code. If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them.',
+        info: 'Number one in the stink parade is duplicated code. If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them.',
 
         suggestedRefactorings: [
             refactoringMethods.extractMethod,

@@ -32,7 +32,7 @@ define([
         this.blockEnd = new SimpleRegex('\\}');
         this.todoComment = new SimpleRegex('.*((\\/\\/\\s*[tT][oO]\\s*[dD][oO].*)|(\\/\\*\\s*[tT][oO]\\s*[dD][oO].*[\\w\\W]*\\*\\/))', 3, 0);
         //this.duplicatedCode = new SimpleRegex('(([ \\r\\t\\f\\S]+\\n){2,}[\\s\\S]+)([\\s\\S]*)\\1', 3, 1);
-        this.duplicatedCode = new SimpleRegex('\\s+(([ \\r\\t\\f\\S]{3,}\\n){2,}[ \\r\\t\\f\\S]{3,})[\\s\\S]*\\1', 2, 0);
+        this.duplicatedCode = new SimpleRegex('[\\s(](([ \\r\\t\\f\\S]{3,}\\n){2,}[ \\r\\t\\f\\S]{3,})[\\s\\S]*\\1', 2, 0);
     };
 
     return new JSSyntax();
