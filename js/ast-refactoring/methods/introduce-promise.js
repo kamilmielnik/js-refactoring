@@ -65,22 +65,31 @@ define([
                     },
                     init: {
                         type: 'FunctionExpression',
-                        /*params: [
+                        params: [
                             {
-                                "type": "Identifier",
-                                "name": "successCallback"
+                                "type": "Identifier"
                             },
                             {
-                                "type": "Identifier",
-                                "name": "failureCallback"
+                                "type": "Identifier"
                             }
-                        ],*/
+                        ],
                         body: {
                             type: 'BlockStatement'
                         }
                     }
                 }
             ]
+        },
+
+        postCheck: function (matchingNode) {
+            var params = matchingNode.declarations[0].init.params,
+                firstParamName = params[0].name.toLocaleLowerCase(),
+                secondParamName = params[1].name.toLocaleLowerCase(),
+                firstParamNamesContainsSuccess = firstParamName.indexOf('succ') > -1,
+                secondParamNamesContainsFailure = secondParamName.indexOf('fail') > -1,
+                secondParamNamesContainsError = secondParamName.indexOf('err') > -1;
+
+            return firstParamNamesContainsSuccess && (secondParamNamesContainsFailure || secondParamNamesContainsError);
         },
 
         rejectNodePattern: {

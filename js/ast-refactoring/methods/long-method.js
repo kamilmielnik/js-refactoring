@@ -25,7 +25,7 @@ define([
                 methodName = matchingNode.id && matchingNode.id.name,
                 nameStartsWithACapitalLetter = methodName && methodName.toUpperCase()[0] === methodName[0],
                 isMethodAConstructor = nameStartsWithACapitalLetter;
-            
+
             return !isMethodAConstructor && numberOfLines > 15;
         }
     });
