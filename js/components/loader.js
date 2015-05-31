@@ -23,9 +23,7 @@ define([
 
             return new Promise(function (fulfill) {
                 require([componentUrl], function (component) {
-                    components.register(component).then(function () {
-                        fulfill();
-                    });
+                    components.register(component).then(fulfill);
                 });
             });
         };

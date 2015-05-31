@@ -50,12 +50,12 @@ function loadHeaderBodyFooterAndAds(header, body, footer, ads) {
     */
 }
 
-list1 = list1.filter(function(a, b) {
+list1 = list1.sort(function(a, b) {
     return a > b ? 1 : -1;
 });
 
 
-list2 = list2.filter(function(a, b) {
+list2 = list2.sort(function(a, b) {
     return a > b ? 1 : -1;
 });
 
