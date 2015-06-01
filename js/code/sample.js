@@ -8,7 +8,7 @@ function isInteger(value) {
     return (floatValue | 0) === floatValue;
 }
 
-thats.how.trainwreck = 'looks like';
+thats.how.trainwreck = 'looks like'.substr(6, 4);
 
 var power = function (a, n) {
     a = a != null ? a : 0;
