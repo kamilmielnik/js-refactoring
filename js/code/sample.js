@@ -1,3 +1,15 @@
+function Person(name) {
+    var self = this;
+
+    this.name = name;
+
+    this.logName = function () {
+        setTimeout(function () {
+            console.log(self.name);
+        }, 1);
+    };
+}
+
 var a = 2; //TODO: remove this variable as it is unused
 
 function isInteger(value) {
@@ -50,15 +62,15 @@ function loadHeaderBodyFooterAndAds(header, body, footer, ads) {
     */
 }
 
-list1 = list1.sort(function(a, b) {
+list1 = list1.sort(function (a, b) {
     return a > b ? 1 : -1;
 });
 
 
-list2 = list2.sort(function(a, b) {
+list2 = list2.sort(function (a, b) {
     return a > b ? 1 : -1;
 });
 
-var asyncOperation = function(successCallback, failureCallback) {
+var asyncOperation = function (successCallback, failureCallback) {
     doSomethingAsync(successCallback, failureCallback);
 };
