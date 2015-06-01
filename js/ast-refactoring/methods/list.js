@@ -5,7 +5,8 @@ define([
     'ast-refactoring/methods/trainwreck',
     'ast-refactoring/methods/obfuscated-string-operations',
     'ast-refactoring/methods/preserve-execution-context',
-    'ast-refactoring/methods/encapsulate-field'
+    'ast-refactoring/methods/public-field',
+    'ast-refactoring/methods/switch-statement'
 ], function (
     IntroducePromise,
     LongMethod,
@@ -13,7 +14,8 @@ define([
     Trainwreck,
     ObfuscatedStringOperations,
     PreserveExecutionContext,
-    EncapsulateField
+    PublicField,
+    SwitchStatement
 ) {
     'use strict';
 
@@ -24,6 +26,7 @@ define([
         Trainwreck,
         ObfuscatedStringOperations,
         PreserveExecutionContext,
-        EncapsulateField
+        PublicField,
+        SwitchStatement
     ];
 });

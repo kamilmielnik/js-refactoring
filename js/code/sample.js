@@ -1,7 +1,7 @@
 function Person(name) {
     var self = this;
 
-    this.name = name;
+    this.name = name.substring(3, 7);
 
     this.logName = function () {
         setTimeout(function () {
@@ -32,12 +32,14 @@ var power = function (a, n) {
     if (!isInteger(n)) {
         throw 'n must be an integer!';
     }
-    if (n === 0) {
-        return 1;
+
+    switch (n) {
+        case 0:
+            return 1;
+        case 1:
+            return a;
     }
-    if (n === 1) {
-        return a;
-    }
+
     var result = a;
     for (var i = 1; i < n; ++i) {
         result *= a;

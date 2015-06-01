@@ -64,6 +64,19 @@ define([], function () {
         formTemplateMethod: {
             name: 'Form Template Method',
             url: 'http://www.refactoring.com/catalog/formTemplateMethod.html'
+        },
+
+        preserveExecutionContext: {
+            name: 'Preserve Execution Context'
+        },
+
+        encapsulateField: {
+            name: 'Encapsulate Field',
+            url: 'http://www.refactoring.com/catalog/encapsulateField.html'
+        },
+
+        deobfuscateStringOperations: {
+            name: 'Deobfuscate String Operations'
         }
     };
 });

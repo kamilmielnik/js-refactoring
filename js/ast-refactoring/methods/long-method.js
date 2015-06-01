@@ -8,7 +8,7 @@ define([
     var LongMethod = new RefactoringMethod({
         name: 'Long Method',
 
-        info: 'The object programs that live best and longest are those with short methods. ',
+        info: 'The object programs that live best and longest are those with short methods.',
 
         suggestedRefactorings: [
             refactoringMethods.extractMethod,

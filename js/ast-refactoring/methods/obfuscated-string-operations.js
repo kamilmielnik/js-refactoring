@@ -11,32 +11,31 @@ define([
 
         info: 'Programs will be more readable if you better communicate your intent by deobfuscating your string operations.',
 
-        suggestedRefactorings: [],
+        suggestedRefactorings: [
+            refactoringMethods.deobfuscateStringOperations
+        ],
 
         nodePattern: {
-            type: 'ExpressionStatement',
-            expression: {
-                type: 'CallExpression',
-                callee: {
-                    type: 'MemberExpression',
-                    property: {
-                        type: 'Identifier'
-                    }
-                },
-                arguments: [
-                    {
-                        type: 'Literal'
-                    }
-                ]
-            }
+            type: 'CallExpression',
+            callee: {
+                type: 'MemberExpression',
+                property: {
+                    type: 'Identifier'
+                }
+            },
+            arguments: [
+                {
+                    type: 'Literal'
+                }
+            ]
         },
 
         postCheck: function (matchingNode) {
-            var memberName = matchingNode.expression.callee.property.name,
+            var memberName = matchingNode.callee.property.name,
                 isMemberASubstringFunction = _(['substr', 'substring']).contains(memberName),
-                isFirstArgumentANumber = _.isNumber(matchingNode.expression.arguments[0].value),
-                isThereASecondArgument = !!matchingNode.expression.arguments[1],
-                isSecondArgumentANumber = isThereASecondArgument && _.isNumber(matchingNode.expression.arguments[1].value);
+                isFirstArgumentANumber = _.isNumber(matchingNode.arguments[0].value),
+                isThereASecondArgument = !!matchingNode.arguments[1],
+                isSecondArgumentANumber = isThereASecondArgument && _.isNumber(matchingNode.arguments[1].value);
 
             return isMemberASubstringFunction && (isFirstArgumentANumber || isSecondArgumentANumber);
         }
