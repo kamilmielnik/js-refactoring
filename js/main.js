@@ -10,7 +10,7 @@ require([
     componentsLoader.load(
         'home',
         'sidebar',
-        'list-of-refactorings',
+        'list-of-smells',
         'status-bar'
     );
 

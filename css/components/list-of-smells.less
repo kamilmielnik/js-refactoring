@@ -1,0 +1,89 @@
+@import 'variables';
+@iconSize: 26px;
+.smell-entry {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border-bottom: @thinDashedBorder;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: @microinteractionTimeMedium;
+    &:last-of-type {
+        border-bottom: initial;
+    }
+    &:hover {
+        background-color: @hoverBackgroundColor;
+        -webkit-transition-property: background-color;
+        -webkit-transition-duration: @microinteractionTimeMedium;
+    }
+    .title {
+        font-size: @fontSizeLarge;
+    }
+    .details {
+        font-size: @fontSizeMedium;
+        height: @iconSize;
+        line-height: @iconSize;
+        .lines {
+            display: inline-block;
+        }
+        .actions {
+            float: right;
+            .action-button {
+                display: inline-block;
+                cursor: pointer;
+                margin-left: 8px;
+                width: @iconSize;
+                height: @iconSize;
+                border-radius: @iconSize/2;
+                font-size: @fontSizeBase;
+                text-align: center;
+                background-color: rgba(255, 255, 255, 0.2);
+                -webkit-transition-property: background-color;
+                -webkit-transition-duration: @microinteractionTimeMedium;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                    -webkit-transition-property: background-color;
+                    -webkit-transition-duration: @microinteractionTimeMedium;
+                }
+                &.disabled {
+                    pointer-events: none;
+                    color: @disabledTextColor;
+                    background-color: rgba(255, 255, 255, 0.05);
+                    -webkit-transition-property: color, background-color;
+                    -webkit-transition-duration: @microinteractionTimeMedium;
+                }
+                &:active,
+                &.pressed {
+                    background-color: @activeBackgroundColor;
+                    -webkit-transition-property: background-color;
+                    -webkit-transition-duration: @microinteractionTimeShort;
+                }
+            }
+        }
+    }
+    .more-details {
+        border-top: @thinBorder;
+        border-bottom: @thinBorder;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        .code-read-only {
+            .CodeMirror {
+                padding-bottom: 1px;
+                height: auto;
+                overflow-y: hidden;
+                .CodeMirror-scroll {
+                    overflow-y: hidden;
+                    overflow-x: auto;
+                }
+            }
+        }
+        .info {
+            padding: 8px 0;
+        }
+        ul {
+            margin: 7px 0;
+            a[href=""] {
+                pointer-events: none;
+            }
+        }
+    }
+}

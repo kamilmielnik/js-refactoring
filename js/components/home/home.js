@@ -1,9 +1,9 @@
 define([
     'knockout',
     'code/code-provider',
-    'regex-refactoring/regex-refactoring-engine',
-    'ast-refactoring/ast-refactoring-engine'
-], function (ko, codeProvider, RegexRefactoringEngine, ASTRefactoringEngine) {
+    'regex-engine/engine',
+    'ast-engine/engine'
+], function (ko, codeProvider, RegexEngine, ASTEngine) {
     'use strict';
 
     return {
@@ -19,9 +19,9 @@ define([
 
             this.code = ko.observable(code);
 
-            this.refactoringEngines = [
-                new RegexRefactoringEngine(),
-                new ASTRefactoringEngine()
+            this.engines = [
+                new RegexEngine(),
+                new ASTEngine()
             ];
         }
     };

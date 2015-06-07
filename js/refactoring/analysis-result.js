@@ -3,8 +3,8 @@ define([
 ], function (_) {
     'use strict';
 
-    var AnalysisResult = function (refactoringMethod, matchedCode, startLine, endLine, lazyRefactorCallback) {
-        this.refactoringMethod = refactoringMethod;
+    var AnalysisResult = function (codeSmell, matchedCode, startLine, endLine, lazyRefactorCallback) {
+        this.codeSmell = codeSmell;
         this.matchedCode = matchedCode;
         this.startLine = startLine;
         this.endLine = endLine;

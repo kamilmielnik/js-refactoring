@@ -4,8 +4,8 @@ define([
     'beautify',
     'utils/parser',
     'utils/application-status',
-    'components/list-of-refactorings/refactoring-entry'
-], function (_, ko, Beautify, parser, applicationStatus, RefactoringEntry) {
+    'components/list-of-smells/smell-entry'
+], function (_, ko, Beautify, parser, applicationStatus, SmellEntry) {
     'use strict';
 
     var componentStates = {
@@ -18,24 +18,24 @@ define([
         componentName: 'sidebar',
 
         viewModel: function (params) {
-            var codeToRefactor = params.codeToRefactor,
+            var codeToAnalyze = params.codeToAnalyze,
                 outputCode = params.outputCode,
-                refactoringEngines = params.refactoringEngines,
-                possibleRefactorings = ko.observableArray(),
+                engines = params.engines,
+                smells = ko.observableArray(),
                 analyze,
                 refactor;
 
             this.state = ko.observable(componentStates.ready);
 
-            this.refactoringEntries = ko.computed(function () {
-                return _(possibleRefactorings()).sortBy('startLine').map(function (possibleRefactoring) {
-                    return new RefactoringEntry(possibleRefactoring);
+            this.smellEntries = ko.computed(function () {
+                return _(smells()).sortBy('startLine').map(function (smell) {
+                    return new SmellEntry(smell);
                 });
             });
 
             this.noRefactoringsSelected = ko.computed(function () {
-                return !_(this.refactoringEntries()).any(function (refactoringEntry) {
-                    return refactoringEntry.isSelected();
+                return !_(this.smellEntries()).any(function (smellEntry) {
+                    return smellEntry.isSelected();
                 });
             }.bind(this));
 
@@ -49,12 +49,12 @@ define([
 
             analyze = function () {
                 this.state(componentStates.analysing);
-                possibleRefactorings.removeAll();
+                smells.removeAll();
                 try {
-                    parser.parse(codeToRefactor());
-                    _(refactoringEngines).each(function (refactoringEngine) {
-                        var foundRefactorings = refactoringEngine.analyze(codeToRefactor()) || [];
-                        possibleRefactorings(possibleRefactorings().concat(foundRefactorings));
+                    parser.parse(codeToAnalyze());
+                    _(engines).each(function (engine) {
+                        var foundSmells = engine.analyze(codeToAnalyze()) || [];
+                        smells(smells().concat(foundSmells));
                     }.bind(this));
                     this.state(componentStates.analysisDone);
                     applicationStatus.ready();
@@ -65,13 +65,13 @@ define([
             }.bind(this);
 
             refactor = function () {
-                var refactoredCode = codeToRefactor(),
+                var refactoredCode = codeToAnalyze(),
                     doneRefactorings = [],
                     beautifiedRefactoredCode;
 
-                _(this.refactoringEntries()).each(function (refactoringEntry) {
-                    var analysisResult = refactoringEntry.analysisResult();
-                    if (refactoringEntry.isSelected() && refactoringEntry.isAutomaticRefactoringPossible()) {
+                _(this.smellEntries()).each(function (smellEntry) {
+                    var analysisResult = smellEntry.analysisResult();
+                    if (smellEntry.isSelected() && smellEntry.isAutomaticRefactoringPossible()) {
                         refactoredCode = refactoredCode.replace(analysisResult.matchedCode, analysisResult.refactor());
                         doneRefactorings.push(analysisResult);
                     }
@@ -79,11 +79,11 @@ define([
 
                 beautifiedRefactoredCode = Beautify.js_beautify(refactoredCode);
                 outputCode(beautifiedRefactoredCode);
-                possibleRefactorings.removeAll(doneRefactorings);
+                smells.removeAll(doneRefactorings);
                 this.state(componentStates.ready);
             }.bind(this);
 
-            codeToRefactor.subscribe(function () {
+            codeToAnalyze.subscribe(function () {
                 this.state(componentStates.ready);
             }.bind(this));
         }
