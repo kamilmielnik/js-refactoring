@@ -39,6 +39,12 @@ define([
                 });
             }.bind(this));
 
+            this.automaticRefactoringPossible = ko.computed(function () {
+                return _(this.smellEntries()).any(function (smellEntry) {
+                    return smellEntry.isAutomaticRefactoringPossible();
+                });
+            }.bind(this));
+
             this.analyze = function () {
                 if (this.state() === componentStates.ready) {
                     analyze();

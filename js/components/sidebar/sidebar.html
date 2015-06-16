@@ -1,4 +1,9 @@
-<div class="button effect-hover-brackets analyze" data-bind="click: analyze">
+<div class="button effect-hover-brackets analyze" data-bind="
+        click: analyze,
+        css: {
+            disabled: state()==='analysisDone' && !automaticRefactoringPossible()
+        }
+    ">
     <div>
         <span data-bind="visible: state()==='ready'">
             Analyze
