@@ -9,7 +9,7 @@ define([
 ], function (_, JSSyntax, CodeSmell, ComplexRegex, RequiredMatches, RefactoringPattern, refactoringMethods) {
     'use strict';
 
-    var DuplicatedCode = new CodeSmell({
+    return new CodeSmell({
         name: 'Duplicated Code',
 
         info: 'Number one in the stink parade is duplicated code. If you see the same code structure in more than one place, you can be sure that your program will be better if you find a way to unify them.',
@@ -39,6 +39,4 @@ define([
             return nonWhiteSpaceCharactersInCode.length > 10;
         }
     });
-
-    return DuplicatedCode;
 });

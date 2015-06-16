@@ -5,8 +5,8 @@ define([
 ], function (CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var PreserveExecutionContext = new CodeSmell({
-        name: 'Preserve Execution Context',
+    return new CodeSmell({
+        name: 'Lost Execution Context',
 
         info: 'You have introduced a variable to hold the value of \'this\'. You should instead have preserved the context via the \'bind\' method where needed.',
 
@@ -30,6 +30,4 @@ define([
             kind: 'var'
         }
     });
-
-    return PreserveExecutionContext;
 });

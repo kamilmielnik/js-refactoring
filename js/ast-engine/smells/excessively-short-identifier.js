@@ -6,7 +6,7 @@ define([
 ], function (_, CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var ExcessivelyShortIdentifier = new CodeSmell({
+    return new CodeSmell({
         name: 'Excessively Short Identifier',
 
         info: 'The name of a variable should reflect its function unless the function is obvious.',
@@ -23,8 +23,8 @@ define([
         },
 
         postCheck: function (matchingNode) {
-            var identifier = matchingNode.id.name,
-                allowedIdentifiers = ['i', 'j', 'k', 'l', 'id', 'pi'];
+            var identifier = matchingNode.id.name.toLowerCase(),
+                allowedIdentifiers = ['i', 'j', 'id', 'pi', 'e'];
 
             if (_(allowedIdentifiers).contains(identifier)) {
                 return false;
@@ -33,6 +33,4 @@ define([
             return identifier.length <= 2;
         }
     });
-
-    return ExcessivelyShortIdentifier;
 });

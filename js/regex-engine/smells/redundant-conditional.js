@@ -8,7 +8,7 @@ define([
     'use strict';
 
     return new CodeSmell({
-        name: 'Remove Redundant Conditional',
+        name: 'Redundant Conditional',
 
         info: 'You have a redundant conditional code which assings condition\'s result to a variable.',
 

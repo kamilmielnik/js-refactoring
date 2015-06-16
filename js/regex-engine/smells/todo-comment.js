@@ -8,7 +8,7 @@ define([
 ], function (JSSyntax, CodeSmell, ComplexRegex, RequiredMatches, RefactoringPattern, refactoringMethods) {
     'use strict';
 
-    var TODOComment = new CodeSmell({
+    return new CodeSmell({
         name: 'TODO Comment',
 
         info: 'TODO comments are a indicator that something needs to be done. Chances are that if you don\'t do it now, then you never will.',
@@ -20,6 +20,4 @@ define([
 
         requiredMatches: new RequiredMatches()
     });
-
-    return TODOComment;
 });

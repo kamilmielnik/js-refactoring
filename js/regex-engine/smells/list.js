@@ -1,6 +1,6 @@
 define([
-    './recompose-conditional',
-    './remove-redundant-conditional',
+    './decomposed-conditional',
+    './redundant-conditional',
     './long-parameter-list',
     './todo-comment',
     './duplicated-code'

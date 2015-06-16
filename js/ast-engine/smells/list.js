@@ -1,10 +1,10 @@
 define([
-    './introduce-promise',
+    './lack-of-promise',
     './long-method',
     './excessively-short-identifier',
     './trainwreck',
     './obfuscated-string-operations',
-    './preserve-execution-context',
+    './lost-execution-context',
     './public-field',
     './switch-statement'
 ], function () {

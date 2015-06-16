@@ -3,7 +3,7 @@ define([
 ], function (codeSmellsList) {
     'use strict';
 
-    var RegexRefactoringEngine = function () {
+    var RegexEngine = function () {
         this.analyze = function (code) {
             var smells = [];
 
@@ -16,5 +16,5 @@ define([
         };
     };
 
-    return RegexRefactoringEngine;
+    return RegexEngine;
 });

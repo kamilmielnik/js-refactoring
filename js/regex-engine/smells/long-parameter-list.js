@@ -8,7 +8,7 @@ define([
 ], function (JSSyntax, CodeSmell, ComplexRegex, RequiredMatches, RefactoringPattern, refactoringMethods) {
     'use strict';
 
-    var LongParameterList = new CodeSmell({
+    return new CodeSmell({
         name: 'Long Parameter List',
 
         info: 'Long parameter lists are hard to understand, because they become inconsistent and difficult to use, and because you are forever changing them as you need more data.',
@@ -30,6 +30,4 @@ define([
 
         requiredMatches: new RequiredMatches()
     });
-
-    return LongParameterList;
 });

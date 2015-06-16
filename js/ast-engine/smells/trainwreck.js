@@ -5,7 +5,7 @@ define([
 ], function (CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var Trainwreck = new CodeSmell({
+    return new CodeSmell({
         name: 'Trainwreck',
 
         info: 'Your expression forms a so-called trainwreck. This is a Law of Demeter violation.',
@@ -23,6 +23,4 @@ define([
             }
         }
     });
-
-    return Trainwreck;
 });

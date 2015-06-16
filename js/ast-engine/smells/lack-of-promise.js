@@ -1,15 +1,18 @@
 define([
     'ast-engine/code-smell',
-    'ast-engine/traverse'
-], function (CodeSmell, traverse) {
+    'ast-engine/traverse',
+    'refactoring/methods'
+], function (CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var IntroducePromise = new CodeSmell({
-        name: 'Introduce Promise',
+    return new CodeSmell({
+        name: 'Lack of Promise',
 
         info: '',
 
-        suggestedRefactorings: [],
+        suggestedRefactorings: [
+            refactoringMethods.introducePromise
+        ],
 
         refactor: function (node) {
             var self = this,
@@ -190,6 +193,4 @@ define([
             };
         }
     });
-
-    return IntroducePromise;
 });

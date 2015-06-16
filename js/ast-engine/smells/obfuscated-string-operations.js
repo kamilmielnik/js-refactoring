@@ -6,7 +6,7 @@ define([
 ], function (_, CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var ObfuscatedStringOperations = new CodeSmell({
+    return new CodeSmell({
         name: 'Obfuscated String Operations',
 
         info: 'Programs will be more readable if you better communicate your intent by deobfuscating your string operations.',
@@ -40,6 +40,4 @@ define([
             return isMemberASubstringFunction && (isFirstArgumentANumber || isSecondArgumentANumber);
         }
     });
-
-    return ObfuscatedStringOperations;
 });

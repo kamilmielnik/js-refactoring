@@ -9,7 +9,7 @@ define([
     'use strict';
 
     return new CodeSmell({
-        name: 'Recompose Conditional',
+        name: 'Decomposed Conditional',
 
         info: 'You have conditional code that is unnecessarily verbose and does not use the most readable JavaScript construct.',
 

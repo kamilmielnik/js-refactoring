@@ -5,7 +5,7 @@ define([
 ], function (CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var LongMethod = new CodeSmell({
+    return new CodeSmell({
         name: 'Long Method',
 
         info: 'The object programs that live best and longest are those with short methods.',
@@ -21,14 +21,8 @@ define([
         },
 
         postCheck: function (matchingNode) {
-            var numberOfLines = matchingNode.loc.end.line - matchingNode.loc.start.line + 1,
-                methodName = matchingNode.id && matchingNode.id.name,
-                nameStartsWithACapitalLetter = methodName && methodName.toUpperCase()[0] === methodName[0],
-                isMethodAConstructor = nameStartsWithACapitalLetter;
-
-            return !isMethodAConstructor && numberOfLines > 15;
+            var numberOfLines = matchingNode.loc.end.line - matchingNode.loc.start.line + 1;
+            return numberOfLines > 15;
         }
     });
-
-    return LongMethod;
 });

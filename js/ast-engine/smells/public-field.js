@@ -5,7 +5,7 @@ define([
 ], function (CodeSmell, traverse, refactoringMethods) {
     'use strict';
 
-    var PublicField = new CodeSmell({
+    return new CodeSmell({
         name: 'Public Field',
 
         info: 'You have publicly available data. You might be better off having encapsulated the field and provided getter and setter methods.',
@@ -51,6 +51,4 @@ define([
             }
         }
     });
-
-    return PublicField;
 });

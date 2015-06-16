@@ -77,6 +77,10 @@ define([], function () {
 
         deobfuscateStringOperations: {
             name: 'Deobfuscate String Operations'
+        },
+
+        introducePromise: {
+            name: 'Introduce Promise'
         }
     };
 });
