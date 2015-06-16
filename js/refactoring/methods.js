@@ -81,6 +81,14 @@ define([], function () {
 
         introducePromise: {
             name: 'Introduce Promise'
+        },
+
+        introduceDynamicAccessors: {
+            name: 'Introduce Dynamic Accessors'
+        },
+
+        introduceDualPurposeGetterSetter: {
+            name: 'Introduce Dual-Purpose Getter-Setter'
         }
     };
 });

@@ -11,7 +11,9 @@ define([
         info: 'You have publicly available data. You might be better off having encapsulated the field and provided getter and setter methods.',
 
         suggestedRefactorings: [
-            refactoringMethods.encapsulateField
+            refactoringMethods.encapsulateField,
+            refactoringMethods.introduceDynamicAccessors,
+            refactoringMethods.introduceDualPurposeGetterSetter
         ],
 
         nodePattern: {
