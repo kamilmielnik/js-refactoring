@@ -54,6 +54,7 @@ define([
             };
 
             analyze = function () {
+                applicationStatus.startAction();
                 this.state(componentStates.analysing);
                 smells.removeAll();
                 try {
@@ -75,6 +76,8 @@ define([
                     doneRefactorings = [],
                     beautifiedRefactoredCode;
 
+                applicationStatus.startAction();
+
                 _(this.smellEntries()).each(function (smellEntry) {
                     var analysisResult = smellEntry.analysisResult();
                     if (smellEntry.isSelected() && smellEntry.isAutomaticRefactoringPossible()) {
@@ -87,6 +90,7 @@ define([
                 outputCode(beautifiedRefactoredCode);
                 smells.removeAll(doneRefactorings);
                 this.state(componentStates.ready);
+                applicationStatus.ready();
             }.bind(this);
 
             codeToAnalyze.subscribe(function () {

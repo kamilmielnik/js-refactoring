@@ -1,10 +1,12 @@
 define([
-    'knockout'
-], function (ko) {
+    'knockout',
+    'moment'
+], function (ko, moment) {
     'use strict';
 
     var ApplicationStatus = function () {
-        var status = ko.observable();
+        var status = ko.observable(),
+            actionStartTime;
 
         this.errors = [];
 
@@ -24,8 +26,22 @@ define([
             status(error);
         };
 
+        this.startAction = function () {
+            actionStartTime = moment();
+        };
+
         this.ready = function () {
-            status('Ready');
+            var actionEndTime = moment(),
+                difference;
+
+            if (actionStartTime) {
+                difference = actionEndTime.diff(actionStartTime, 'ms');
+                status('Ready ({time} ms)'.format({
+                    time: difference
+                }));
+            } else {
+                status('Ready');
+            }
         };
     };
 

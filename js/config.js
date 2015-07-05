@@ -13,6 +13,7 @@
             'jquery': 'lib/jquery-2.1.1',
             'underscore': 'lib/underscore',
             'knockout': 'lib/knockout',
+            'moment': 'lib/moment',
             'text': 'lib/text',
             'json': 'lib/json',
             'string': 'lib/string',
