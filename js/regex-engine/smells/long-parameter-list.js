@@ -17,7 +17,8 @@ define([
             refactoringMethods.replaceParameterWithMethod,
             refactoringMethods.replaceParameterWithExplicitMethods,
             refactoringMethods.preserveWholeObject,
-            refactoringMethods.introduceParameterObject
+            refactoringMethods.introduceParameterObject,
+            refactoringMethods.introduceNamedParameter
         ],
 
         regex: new ComplexRegex()

@@ -89,6 +89,14 @@ define([], function () {
 
         introduceDualPurposeGetterSetter: {
             name: 'Introduce Dual-Purpose Getter-Setter'
+        },
+
+        replaceConditionalWithMapping: {
+            name: 'Replace Conditional with Mapping'
+        },
+
+        introduceNamedParameter: {
+            name: 'Introduce Named Parameter'
         }
     };
 });
