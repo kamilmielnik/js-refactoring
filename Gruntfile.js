@@ -131,7 +131,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-        'lint',
+        //'lint',
         'clean',
         'less',
         'copy'
